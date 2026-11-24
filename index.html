@@ -1,0 +1,1065 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Patrick Dohn Joseph A. Lontok (Otep) — Software & Automation Developer, Backend & Cloud Engineer building high-reliability serverless systems and calm web interfaces." />
+    <title>Patrick Lontok — Software &amp; Automation Developer</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    
+    <!-- Preconnect to Google Fonts for Plus Jakarta Sans, Inter, & JetBrains Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@700;800&display=swap"
+      rel="stylesheet"
+    />
+    
+    <link rel="stylesheet" href="/src/styles/main.css" />
+  </head>
+  <body data-active-chapter="morning">
+    <!-- Accessibility: Direct Skip Link -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- Day-to-Night Atmospheric Backdrop (Zero-Reflow Opacity Planes) -->
+    <div id="day-night-atmosphere" class="atmosphere-backdrop" aria-hidden="true">
+      <div class="atmosphere-plane atmosphere-plane--morning"></div>
+      <div class="atmosphere-plane atmosphere-plane--afternoon"></div>
+      <div class="atmosphere-plane atmosphere-plane--evening"></div>
+      <div class="atmosphere-plane atmosphere-plane--night"></div>
+
+      <!-- Celestial Sky Bodies: Radiant Sun, Sunset Glow, Twilight Stars & Luminous Moon -->
+      <div id="celestial-scene" class="celestial-scene" aria-hidden="true">
+        <!-- 1. The Radiant Sun (Morning Dawn & Midday with Volumetric Soft Feathered God Rays) -->
+        <div id="celestial-sun" class="celestial-body celestial-sun">
+          <svg class="celestial-sun__svg" viewBox="0 0 600 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <radialGradient id="sunAura" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="#FFFBEB" stop-opacity="0.65" />
+                <stop offset="25%" stop-color="#FDE68A" stop-opacity="0.38" />
+                <stop offset="60%" stop-color="#F59E0B" stop-opacity="0.14" />
+                <stop offset="85%" stop-color="#F59E0B" stop-opacity="0.02" />
+                <stop offset="100%" stop-color="#F59E0B" stop-opacity="0" />
+              </radialGradient>
+              <radialGradient id="sunCore" cx="42%" cy="42%" r="58%">
+                <stop offset="0%" stop-color="#FFFFFF" />
+                <stop offset="35%" stop-color="#FFFBEB" />
+                <stop offset="70%" stop-color="#FDE68A" />
+                <stop offset="100%" stop-color="#F59E0B" />
+              </radialGradient>
+              <!-- Seamless Feathered God Ray Gradients (Fade completely to 0 opacity before edges) -->
+              <linearGradient id="godRayGrad1" x1="50%" y1="0%" x2="50%" y2="100%">
+                <stop offset="0%" stop-color="#FEF08A" stop-opacity="0.38" />
+                <stop offset="40%" stop-color="#FDE047" stop-opacity="0.14" />
+                <stop offset="78%" stop-color="#F59E0B" stop-opacity="0.02" />
+                <stop offset="100%" stop-color="#F59E0B" stop-opacity="0" />
+              </linearGradient>
+              <linearGradient id="godRayGrad2" x1="20%" y1="0%" x2="80%" y2="100%">
+                <stop offset="0%" stop-color="#FEF08A" stop-opacity="0.32" />
+                <stop offset="45%" stop-color="#FDE047" stop-opacity="0.11" />
+                <stop offset="78%" stop-color="#F59E0B" stop-opacity="0.02" />
+                <stop offset="100%" stop-color="#F59E0B" stop-opacity="0" />
+              </linearGradient>
+              <linearGradient id="godRayGrad3" x1="80%" y1="0%" x2="20%" y2="100%">
+                <stop offset="0%" stop-color="#FEF08A" stop-opacity="0.28" />
+                <stop offset="45%" stop-color="#FBBF24" stop-opacity="0.10" />
+                <stop offset="80%" stop-color="#F59E0B" stop-opacity="0.02" />
+                <stop offset="100%" stop-color="#F59E0B" stop-opacity="0" />
+              </linearGradient>
+            </defs>
+            <!-- Volumetric Crepuscular God Rays (Feathered & Seamlessly Dissolving) -->
+            <g class="sun-volumetric-rays" aria-hidden="true">
+              <polygon points="300,300 80,560 170,580" fill="url(#godRayGrad1)" />
+              <polygon points="300,300 190,590 280,595" fill="url(#godRayGrad2)" opacity="0.85" />
+              <polygon points="300,300 320,595 410,585" fill="url(#godRayGrad1)" opacity="0.9" />
+              <polygon points="300,300 440,570 530,540" fill="url(#godRayGrad3)" opacity="0.75" />
+              <polygon points="300,300 550,450 585,380" fill="url(#godRayGrad2)" opacity="0.5" />
+              <polygon points="300,300 50,440 15,370" fill="url(#godRayGrad3)" opacity="0.5" />
+            </g>
+            <!-- Outer Radiant Corona -->
+            <circle cx="300" cy="300" r="280" fill="url(#sunAura)" />
+            <!-- Inner Glowing Sun Sphere -->
+            <circle class="celestial-sun__core" cx="300" cy="300" r="72" fill="url(#sunCore)" />
+          </svg>
+        </div>
+
+        <!-- 2. Sunset Horizon Warmth (Dusk Glow during Midday-to-Evening Transition) -->
+        <div id="celestial-sunset" class="celestial-sunset"></div>
+
+        <!-- 3. Ambient Procedural Sky Clouds (Drifting sideways & horizontally) -->
+        <div id="celestial-clouds" class="celestial-clouds" aria-hidden="true">
+          <!-- Cloud 1: High Morning Cumulus -->
+          <div class="celestial-cloud-wrap celestial-cloud-wrap--1">
+            <svg class="celestial-cloud celestial-cloud--1" viewBox="0 0 140 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M30 65 C18 65 10 54 16 40 C12 28 26 18 40 20 C48 8 72 6 86 18 C98 12 114 22 112 36 C124 42 122 60 106 65 Z" fill="currentColor" />
+            </svg>
+          </div>
+          <!-- Cloud 2: Gentle Midday Drifter -->
+          <div class="celestial-cloud-wrap celestial-cloud-wrap--2">
+            <svg class="celestial-cloud celestial-cloud--2" viewBox="0 0 180 90" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M40 70 C24 70 14 58 22 44 C18 30 34 20 50 22 C60 10 92 8 106 20 C122 14 142 24 140 40 C154 46 152 66 132 70 Z" fill="currentColor" />
+            </svg>
+          </div>
+          <!-- Cloud 3: Sunset Stratus Layer -->
+          <div class="celestial-cloud-wrap celestial-cloud-wrap--3">
+            <svg class="celestial-cloud celestial-cloud--3" viewBox="0 0 220 70" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M25 45 C12 45 6 36 12 26 C8 16 20 8 32 10 C40 2 64 2 74 10 C84 6 102 12 100 22 C112 26 110 40 96 45 Z" fill="currentColor" />
+            </svg>
+          </div>
+        </div>
+
+        <!-- 4. Realistic Side-View Soaring Birds (Gliding horizontally across the sky) -->
+        <div id="celestial-birds" class="celestial-birds" aria-hidden="true">
+          <!-- Flight Flock 1: Gliding horizontally from right to left (beak points left into flight) -->
+          <div class="celestial-birds-flight celestial-birds-flight--1">
+            <svg class="celestial-birds__svg" viewBox="-50 -50 260 160" fill="none" xmlns="http://www.w3.org/2000/svg" style="overflow: visible;">
+              <!-- Lead Swallow (Wrapped in bird-anchor to protect SVG coordinates from CSS transform override) -->
+              <g class="bird-anchor" transform="translate(120, 25) scale(-0.85, 0.85)">
+                <g class="celestial-bird celestial-bird--lead">
+                  <!-- Far Wing -->
+                  <path class="bird-wing-far" d="M28 12 C33 4, 39 -2, 45 -6 C47 -8, 51 -10, 55 -12 C51 -8, 45 -2, 41 3 C37 8, 33 11, 28 12 Z" fill="currentColor" opacity="0.65" />
+                  <!-- Aerodynamic Body, Head, Beak, and Forked Tail -->
+                  <path class="bird-body" d="M10 18 C15 12, 23 10, 31 11 C37 12, 43 14, 51 14 C55 14, 61 13, 67 10 L71 11 L66 13 C59 16, 51 19, 43 20 C35 21, 25 21, 17 20 L5 26 L10 18 Z" fill="currentColor" />
+                  <!-- Near Sweeping Wing -->
+                  <path class="bird-wing-near" d="M32 13 C36 3, 44 -5, 52 -11 C56 -14, 62 -17, 68 -19 C62 -13, 54 -5, 48 3 C42 10, 37 13, 32 13 Z" fill="currentColor" />
+                </g>
+              </g>
+              <!-- Follower 1 (Flipped to point LEFT) -->
+              <g class="bird-anchor" transform="translate(180, 52) scale(-0.62, 0.62)">
+                <g class="celestial-bird celestial-bird--follow1">
+                  <path class="bird-wing-far" d="M28 12 C33 4, 39 -2, 45 -6 C47 -8, 51 -10, 55 -12 C51 -8, 45 -2, 41 3 C37 8, 33 11, 28 12 Z" fill="currentColor" opacity="0.65" />
+                  <path class="bird-body" d="M10 18 C15 12, 23 10, 31 11 C37 12, 43 14, 51 14 C55 14, 61 13, 67 10 L71 11 L66 13 C59 16, 51 19, 43 20 C35 21, 25 21, 17 20 L5 26 L10 18 Z" fill="currentColor" />
+                  <path class="bird-wing-near" d="M32 13 C36 3, 44 -5, 52 -11 C56 -14, 62 -17, 68 -19 C62 -13, 54 -5, 48 3 C42 10, 37 13, 32 13 Z" fill="currentColor" />
+                </g>
+              </g>
+              <!-- Follower 2 (Flipped to point LEFT) -->
+              <g class="bird-anchor" transform="translate(60, 48) scale(-0.55, 0.55)">
+                <g class="celestial-bird celestial-bird--follow2">
+                  <path class="bird-wing-far" d="M28 12 C33 4, 39 -2, 45 -6 C47 -8, 51 -10, 55 -12 C51 -8, 45 -2, 41 3 C37 8, 33 11, 28 12 Z" fill="currentColor" opacity="0.65" />
+                  <path class="bird-body" d="M10 18 C15 12, 23 10, 31 11 C37 12, 43 14, 51 14 C55 14, 61 13, 67 10 L71 11 L66 13 C59 16, 51 19, 43 20 C35 21, 25 21, 17 20 L5 26 L10 18 Z" fill="currentColor" />
+                  <path class="bird-wing-near" d="M32 13 C36 3, 44 -5, 52 -11 C56 -14, 62 -17, 68 -19 C62 -13, 54 -5, 48 3 C42 10, 37 13, 32 13 Z" fill="currentColor" />
+                </g>
+              </g>
+            </svg>
+          </div>
+          <!-- Flight Flock 2: Gliding horizontally from left to right (beak points right into flight) -->
+          <div class="celestial-birds-flight celestial-birds-flight--2">
+            <svg class="celestial-birds__svg" viewBox="-60 -50 260 160" fill="none" xmlns="http://www.w3.org/2000/svg" style="overflow: visible;">
+              <g class="bird-anchor" transform="translate(30, 25) scale(0.85, 0.85)">
+                <g class="celestial-bird celestial-bird--solo">
+                  <path class="bird-wing-far" d="M28 12 C33 4, 39 -2, 45 -6 C47 -8, 51 -10, 55 -12 C51 -8, 45 -2, 41 3 C37 8, 33 11, 28 12 Z" fill="currentColor" opacity="0.65" />
+                  <path class="bird-body" d="M10 18 C15 12, 23 10, 31 11 C37 12, 43 14, 51 14 C55 14, 61 13, 67 10 L71 11 L66 13 C59 16, 51 19, 43 20 C35 21, 25 21, 17 20 L5 26 L10 18 Z" fill="currentColor" />
+                  <path class="bird-wing-near" d="M32 13 C36 3, 44 -5, 52 -11 C56 -14, 62 -17, 68 -19 C62 -13, 54 -5, 48 3 C42 10, 37 13, 32 13 Z" fill="currentColor" />
+                </g>
+              </g>
+              <g class="bird-anchor" transform="translate(90, 48) scale(0.65, 0.65)">
+                <g class="celestial-bird celestial-bird--companion">
+                  <path class="bird-wing-far" d="M28 12 C33 4, 39 -2, 45 -6 C47 -8, 51 -10, 55 -12 C51 -8, 45 -2, 41 3 C37 8, 33 11, 28 12 Z" fill="currentColor" opacity="0.65" />
+                  <path class="bird-body" d="M10 18 C15 12, 23 10, 31 11 C37 12, 43 14, 51 14 C55 14, 61 13, 67 10 L71 11 L66 13 C59 16, 51 19, 43 20 C35 21, 25 21, 17 20 L5 26 L10 18 Z" fill="currentColor" />
+                  <path class="bird-wing-near" d="M32 13 C36 3, 44 -5, 52 -11 C56 -14, 62 -17, 68 -19 C62 -13, 54 -5, 48 3 C42 10, 37 13, 32 13 Z" fill="currentColor" />
+                </g>
+              </g>
+            </svg>
+          </div>
+        </div>
+
+        <!-- 5. Twilight Stars Constellation (Evening & Nocturne) -->
+        <div id="celestial-stars" class="celestial-stars">
+          <svg class="celestial-stars__svg" viewBox="0 0 1000 600" preserveAspectRatio="none" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="120" cy="80" r="1.5" fill="#BAE6FD" opacity="0.8" class="star star--1" />
+            <circle cx="280" cy="140" r="1.0" fill="#FFFFFF" opacity="0.6" class="star star--2" />
+            <circle cx="450" cy="60" r="2.0" fill="#E0F2FE" opacity="0.9" class="star star--3" />
+            <circle cx="620" cy="110" r="1.2" fill="#BAE6FD" opacity="0.7" class="star star--4" />
+            <circle cx="780" cy="70" r="1.8" fill="#FFFFFF" opacity="0.85" class="star star--5" />
+            <circle cx="890" cy="130" r="1.0" fill="#E0F2FE" opacity="0.6" class="star star--6" />
+            <circle cx="200" cy="220" r="1.4" fill="#FFFFFF" opacity="0.75" class="star star--7" />
+            <circle cx="380" cy="260" r="1.0" fill="#BAE6FD" opacity="0.5" class="star star--8" />
+            <circle cx="560" cy="190" r="1.6" fill="#FFFFFF" opacity="0.8" class="star star--9" />
+            <circle cx="710" cy="240" r="1.2" fill="#E0F2FE" opacity="0.65" class="star star--10" />
+            <circle cx="840" cy="210" r="1.5" fill="#BAE6FD" opacity="0.7" class="star star--11" />
+          </svg>
+        </div>
+
+        <!-- 4. The Luminous Moon (Chapter 03 Dusk & Chapter 04 Midnight Nocturne) -->
+        <div id="celestial-moon" class="celestial-body celestial-moon">
+          <svg class="celestial-moon__svg" viewBox="0 0 160 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <radialGradient id="moonAura" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="#38BDF8" stop-opacity="0.5" />
+                <stop offset="45%" stop-color="#0284C7" stop-opacity="0.2" />
+                <stop offset="100%" stop-color="#0284C7" stop-opacity="0" />
+              </radialGradient>
+              <linearGradient id="moonIlluminated" x1="15%" y1="20%" x2="95%" y2="85%">
+                <stop offset="0%" stop-color="#FFFFFF" />
+                <stop offset="45%" stop-color="#F0F9FF" />
+                <stop offset="100%" stop-color="#7DD3FC" />
+              </linearGradient>
+              <linearGradient id="moonEarthshine" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#1E293B" stop-opacity="0.45" />
+                <stop offset="100%" stop-color="#0F172A" stop-opacity="0.25" />
+              </linearGradient>
+            </defs>
+            <!-- Atmospheric Celestial Halo -->
+            <circle cx="80" cy="80" r="76" fill="url(#moonAura)" />
+            <!-- Soft Earthshine (Dark side of the lunar sphere) -->
+            <circle cx="80" cy="80" r="38" fill="url(#moonEarthshine)" stroke="rgba(255, 255, 255, 0.12)" stroke-width="0.8" />
+            <!-- Luminous Waxing Crescent Phase Body -->
+            <path class="celestial-moon__core" d="M 80 42 A 38 38 0 1 1 80 118 A 38 38 0 0 0 80 42 Z" fill="url(#moonIlluminated)" />
+            <!-- Subtle Maria & Crater Details on the Illuminated Limb -->
+            <circle cx="94" cy="66" r="4.5" fill="#0284C7" opacity="0.22" />
+            <circle cx="102" cy="78" r="5.5" fill="#0284C7" opacity="0.20" />
+            <circle cx="96" cy="92" r="4" fill="#0284C7" opacity="0.25" />
+            <circle cx="86" cy="104" r="3" fill="#0284C7" opacity="0.18" />
+          </svg>
+        </div>
+
+        <!-- 6. Distant Atmospheric Horizon Silhouettes (Mountain Ridges with Parallax Depth) -->
+        <div id="celestial-horizon" class="celestial-horizon" aria-hidden="true">
+          <svg class="celestial-horizon__svg celestial-horizon__svg--far" viewBox="0 0 1440 220" preserveAspectRatio="none" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0 220 L0 150 Q160 115 320 145 Q500 85 680 125 Q860 65 1040 105 Q1220 75 1440 135 L1440 220 Z" fill="currentColor" />
+          </svg>
+          <svg class="celestial-horizon__svg celestial-horizon__svg--near" viewBox="0 0 1440 180" preserveAspectRatio="none" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0 180 L0 115 Q200 80 400 125 Q620 60 840 110 Q1060 55 1260 100 Q1360 85 1440 110 L1440 180 Z" fill="currentColor" />
+          </svg>
+        </div>
+
+        <!-- 7. Ambient Environmental Particles (Golden Sun Motes, Sunset Embers & Night Stars) -->
+        <div id="celestial-motes" class="celestial-motes" aria-hidden="true">
+          <span class="celestial-mote celestial-mote--1"></span>
+          <span class="celestial-mote celestial-mote--2"></span>
+          <span class="celestial-mote celestial-mote--3"></span>
+          <span class="celestial-mote celestial-mote--4"></span>
+          <span class="celestial-mote celestial-mote--5"></span>
+          <span class="celestial-mote celestial-mote--6"></span>
+          <span class="celestial-mote celestial-mote--7"></span>
+          <span class="celestial-mote celestial-mote--8"></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Loader Sequence (Milestone 4: Sunrise-to-Open Sequence) -->
+    <div
+      id="loader"
+      class="loader-overlay"
+      role="progressbar"
+      aria-valuenow="0"
+      aria-valuemin="0"
+      aria-valuemax="100"
+      aria-label="Day loading sequence: pre-dawn to sunrise"
+    >
+      <div class="loader-bloom" aria-hidden="true"></div>
+
+      <div class="loader-content">
+        <!-- Weather Cloud Mascot Big Icon -->
+        <div class="loader-weather" id="loader-weather" aria-hidden="true">
+          <svg class="loader-weather__svg" viewBox="0 0 100 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="loaderCloudGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop id="loaderCloudStop1" offset="0%" stop-color="#1E3A5F" />
+                <stop id="loaderCloudStop2" offset="100%" stop-color="#0B1A2E" />
+              </linearGradient>
+            </defs>
+            <path id="loader-cloud-body" class="loader-weather__body" d="M25 60 C14 60 10 50 12 40 C10 30 20 20 32 22 C38 10 56 8 66 18 C76 12 88 20 87 34 C95 38 96 54 82 60 Z" fill="url(#loaderCloudGrad)" stroke="rgba(255, 255, 255, 0.25)" stroke-width="1.5" />
+            <rect class="loader-weather__screen" x="28" y="28" width="44" height="26" rx="4" fill="#07111E" stroke="#FBBF24" stroke-width="1" />
+            <text id="loader-weather-prompt" class="loader-weather__prompt" x="33" y="44" font-family="JetBrains Mono, monospace" font-size="9" fill="#FBBF24" font-weight="bold">&gt;_</text>
+            <circle class="loader-weather__eye loader-weather__eye--left" cx="54" cy="41" r="2.4" fill="#FBBF24" />
+            <circle class="loader-weather__eye loader-weather__eye--right" cx="63" cy="41" r="2.4" fill="#FBBF24" />
+            <path class="loader-weather__spark" d="M50 12 L50 4 M46 8 L54 8" stroke="#FBBF24" stroke-width="1.5" stroke-linecap="round" />
+          </svg>
+          <div class="loader-weather__bubble">
+            <span id="loader-weather-speech" class="loader-weather__speech">&gt;_ waking up... 🌙</span>
+          </div>
+        </div>
+
+        <div class="loader-tag">
+          <span class="pulse-dot" aria-hidden="true"></span>
+          <span id="loader-status">PRE-DAWN // 05:00 AM PHT</span>
+        </div>
+
+        <div class="loader-counter-wrap">
+          <span id="loader-time" class="loader-counter">05:00</span>
+          <span class="loader-period">AM</span>
+        </div>
+
+        <div class="loader-progress-track" aria-hidden="true">
+          <div id="loader-progress-bar" class="loader-progress-bar"></div>
+        </div>
+
+        <div class="loader-footer">
+          <span id="loader-percent" class="loader-percent">00%</span>
+          <span class="guiding-cue guiding-cue--accent">AWAKENING THE DAY // CHAPTERS LOADING</span>
+          <button id="loader-skip" class="loader-skip-btn" aria-label="Skip introduction animation">Skip ↵</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Persistent Minimal Navigation (<10s access to Work & Contact) -->
+    <header class="site-header" role="banner">
+      <div class="site-header__brand">
+        <a href="#chapter-morning" class="site-brand" aria-label="Home — Back to morning dawn">
+          <span class="site-brand__name">PATRICK_LONTOK</span>
+          <span class="site-brand__badge">01</span>
+        </a>
+      </div>
+
+      <nav class="site-header__nav" aria-label="Chapter navigation">
+        <div class="site-nav">
+          <ul class="site-nav__list">
+            <li><a href="#chapter-morning" class="site-nav__link">Dawn</a></li>
+            <li><a href="#chapter-afternoon" class="site-nav__link">Work</a></li>
+            <li><a href="#chapter-evening" class="site-nav__link">About</a></li>
+            <li><a href="#chapter-night" class="site-nav__link">Contact</a></li>
+          </ul>
+        </div>
+      </nav>
+
+      <div class="site-header__meta">
+        <div class="site-header__time" id="time-display" aria-live="off" title="Philippine Standard Time (Manila, UTC+8)">
+          <span class="pulse-dot" aria-hidden="true"></span>
+          <span id="current-chapter-indicator">CH 01 // 06:45 AM PHT</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main id="main-content" tabindex="-1">
+      
+      <!-- ===================================================================
+           CHAPTER 01: MORNING (Dawn / Intro)
+           =================================================================== -->
+      <section
+        id="chapter-morning"
+        class="chapter chapter--morning"
+        data-chapter="morning"
+        aria-label="Chapter 01: Morning — Introduction"
+      >
+        <div class="container">
+          <div class="intro-wrapper">
+            <div class="chapter-meta">
+              <span>Chapter 01 // First Light</span>
+            </div>
+            <h1 class="hero-title">Patrick Lontok</h1>
+            <p class="lead-text">
+              Software &amp; Automation Developer and Cloud Engineer building high-reliability serverless architectures, deterministic data workflows, and calm web interfaces.
+            </p>
+            <div class="scroll-prompt">
+              <span class="guiding-cue guiding-cue--accent" aria-hidden="true">Scroll to begin the day</span>
+              <span class="guiding-cue" aria-hidden="true">↓</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================================================================
+           CHAPTER TRANSITION: TYPOGRAPHIC CSS 3D TUNNEL (Milestone 5)
+           "Falling into the next chapter: Morning ➔ Afternoon"
+           Conforms to BRIEF.md Section 7: Typographic CSS 3D tunnel
+           =================================================================== -->
+      <section
+        id="tunnel-morning-afternoon"
+        class="tunnel-section"
+        aria-label="Chapter transition: Falling into the Afternoon"
+      >
+        <div class="tunnel-viewport">
+          <div class="tunnel-perspective">
+            <!-- 3D Transform World Container -->
+            <div class="tunnel-world" aria-hidden="true">
+              
+              <!-- Frame 01: Academic Standing -->
+              <div class="tunnel-frame tunnel-frame--1" data-frame="0">
+                <div class="tunnel-frame__card">
+                  <div class="tunnel-frame__meta-row">
+                    <span class="tunnel-frame__badge">01 // ACADEMIC STANDING</span>
+                    <span class="tunnel-frame__coord">PUP-SRC // 07:00 AM</span>
+                  </div>
+                  <h3 class="tunnel-frame__title">BSIT AT PUP SANTA ROSA</h3>
+                  <p class="tunnel-frame__subtitle">CONSISTENT DEAN'S LIST SCHOLAR (2024–2028)</p>
+                  <div class="tunnel-frame__tags">
+                    <span class="tunnel-frame__tag">Dean's List Standing</span>
+                    <span class="tunnel-frame__tag">JTEN High Honors (95.4%)</span>
+                    <span class="tunnel-frame__tag">Leadership Awards</span>
+                    <span class="tunnel-frame__tag">Santa Rosa, Laguna</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Frame 02: Core Engineering & Algorithms -->
+              <div class="tunnel-frame tunnel-frame--2" data-frame="1">
+                <div class="tunnel-frame__card">
+                  <div class="tunnel-frame__meta-row">
+                    <span class="tunnel-frame__badge">02 // CORE ALGORITHMS</span>
+                    <span class="tunnel-frame__coord">SYSTEMS ARCHITECTURE</span>
+                  </div>
+                  <h3 class="tunnel-frame__title">DATA STRUCTURES &amp; ALGORITHMS</h3>
+                  <p class="tunnel-frame__subtitle">COMPLEXITY ANALYSIS &amp; OBJECT-ORIENTED C++</p>
+                  <div class="tunnel-frame__tags">
+                    <span class="tunnel-frame__tag">C++ Foundations</span>
+                    <span class="tunnel-frame__tag">Memory Optimization</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Frame 03: Languages & Core Code -->
+              <div class="tunnel-frame tunnel-frame--3" data-frame="2">
+                <div class="tunnel-frame__card">
+                  <div class="tunnel-frame__meta-row">
+                    <span class="tunnel-frame__badge">03 // CORE LANGUAGES</span>
+                    <span class="tunnel-frame__coord">PRODUCTION RUNTIMES</span>
+                  </div>
+                  <h3 class="tunnel-frame__title">PYTHON • TYPESCRIPT • SQL • VBA</h3>
+                  <p class="tunnel-frame__subtitle">ENTERPRISE AUTOMATION &amp; DATA WORKFLOWS</p>
+                  <div class="tunnel-frame__tags">
+                    <span class="tunnel-frame__tag">Python &amp; FastAPI</span>
+                    <span class="tunnel-frame__tag">TypeScript &amp; React</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Frame 04: Cloud & Serverless Infrastructure -->
+              <div class="tunnel-frame tunnel-frame--4" data-frame="3">
+                <div class="tunnel-frame__card">
+                  <div class="tunnel-frame__meta-row">
+                    <span class="tunnel-frame__badge">04 // SERVERLESS CLOUD</span>
+                    <span class="tunnel-frame__coord">AMAZON WEB SERVICES</span>
+                  </div>
+                  <h3 class="tunnel-frame__title">AWS SERVERLESS &amp; DOCKER</h3>
+                  <p class="tunnel-frame__subtitle">EVENT-DRIVEN ARCHITECTURES &amp; CONTAINERS</p>
+                  <div class="tunnel-frame__tags">
+                    <span class="tunnel-frame__tag">AWS Lambda</span>
+                    <span class="tunnel-frame__tag">Docker Containers</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Frame 05: Data Architecture & ETL -->
+              <div class="tunnel-frame tunnel-frame--5" data-frame="4">
+                <div class="tunnel-frame__card">
+                  <div class="tunnel-frame__meta-row">
+                    <span class="tunnel-frame__badge">05 // DATA ARCHITECTURE</span>
+                    <span class="tunnel-frame__coord">ANALYTICAL PIPELINES</span>
+                  </div>
+                  <h3 class="tunnel-frame__title">ANALYTICAL SQL &amp; ETL PIPELINES</h3>
+                  <p class="tunnel-frame__subtitle">DATA ANALYTICS &amp; PIPELINES (CISCO CERTIFIED)</p>
+                  <div class="tunnel-frame__tags">
+                    <span class="tunnel-frame__tag">Amazon Redshift</span>
+                    <span class="tunnel-frame__tag">Cisco: Data Analytics Essentials</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Frame 06: Automation Leadership -->
+              <div class="tunnel-frame tunnel-frame--6" data-frame="5">
+                <div class="tunnel-frame__card">
+                  <div class="tunnel-frame__meta-row">
+                    <span class="tunnel-frame__badge">06 // AUTOMATION EXCELLENCE</span>
+                    <span class="tunnel-frame__coord">EDUKASYON.PH AWS RE/START</span>
+                  </div>
+                  <h3 class="tunnel-frame__title">EDUKASYON.PH ATTENDANCE ENGINE</h3>
+                  <p class="tunnel-frame__subtitle">TECHNICAL COMMUNITY OFFICER (1,200+ DISPATCHES)</p>
+                  <div class="tunnel-frame__tags">
+                    <span class="tunnel-frame__tag">Google Meet &amp; Calendar API</span>
+                    <span class="tunnel-frame__tag">93% Faster Reconciliation</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Frame 07: Deterministic Reliability -->
+              <div class="tunnel-frame tunnel-frame--7" data-frame="6">
+                <div class="tunnel-frame__card">
+                  <div class="tunnel-frame__meta-row">
+                    <span class="tunnel-frame__badge">07 // DETERMINISTIC RIGOR</span>
+                    <span class="tunnel-frame__coord">ZERO-WASTE ARCHITECTURE</span>
+                  </div>
+                  <h3 class="tunnel-frame__title">ARAL MANAGEMENT PLATFORM</h3>
+                  <p class="tunnel-frame__subtitle">TRANSACTIONAL MUTEX LOCKS &amp; $0 INFRA COST</p>
+                  <div class="tunnel-frame__tags">
+                    <span class="tunnel-frame__tag">Google Apps Script</span>
+                    <span class="tunnel-frame__tag">100% Vitest Pass</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Frame 08: Production Backend Systems -->
+              <div class="tunnel-frame tunnel-frame--8" data-frame="7">
+                <div class="tunnel-frame__card">
+                  <div class="tunnel-frame__meta-row">
+                    <span class="tunnel-frame__badge">08 // PRODUCTION BACKENDS</span>
+                    <span class="tunnel-frame__coord">FASTAPI &amp; DYNAMODB</span>
+                  </div>
+                  <h3 class="tunnel-frame__title">PUP SKILLSWAP PLATFORM</h3>
+                  <p class="tunnel-frame__subtitle">CAMPUS-WIDE ACADEMIC PEER EXCHANGE</p>
+                  <div class="tunnel-frame__tags">
+                    <span class="tunnel-frame__tag">FastAPI REST</span>
+                    <span class="tunnel-frame__tag">DynamoDB Querying</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Frame 09: Cloud Leadership & Community -->
+              <div class="tunnel-frame tunnel-frame--9" data-frame="8">
+                <div class="tunnel-frame__card">
+                  <div class="tunnel-frame__meta-row">
+                    <span class="tunnel-frame__badge">09 // CLOUD LEADERSHIP</span>
+                    <span class="tunnel-frame__coord">CAMPUS LEAD</span>
+                  </div>
+                  <h3 class="tunnel-frame__title">AWS LEARNING CLUB – POLAR</h3>
+                  <p class="tunnel-frame__subtitle">STUDENT LEAD &amp; COMMUNITY CAPTAIN</p>
+                  <div class="tunnel-frame__tags">
+                    <span class="tunnel-frame__tag">14 Events &amp; City-Wide Hackathon</span>
+                    <span class="tunnel-frame__tag">2 AWS Community Day Participations</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Frame 10: Technical Instruction & Security -->
+              <div class="tunnel-frame tunnel-frame--10" data-frame="9">
+                <div class="tunnel-frame__card">
+                  <div class="tunnel-frame__meta-row">
+                    <span class="tunnel-frame__badge">10 // TECHNICAL INSTRUCTION</span>
+                    <span class="tunnel-frame__coord">GDG PUP &amp; AWS 101</span>
+                  </div>
+                  <h3 class="tunnel-frame__title">AWS 101 WORKSHOP &amp; FOUNDATIONAL LABS</h3>
+                  <p class="tunnel-frame__subtitle">CURRICULUM INSTRUCTOR &amp; WORKSHOP LEAD</p>
+                  <div class="tunnel-frame__tags">
+                    <span class="tunnel-frame__tag">AWS Foundational Primitives</span>
+                    <span class="tunnel-frame__tag">Hands-on Technical Labs</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Frame 11: Regional Summit & Creative Dimensions -->
+              <div class="tunnel-frame tunnel-frame--11" data-frame="10">
+                <div class="tunnel-frame__card">
+                  <div class="tunnel-frame__meta-row">
+                    <span class="tunnel-frame__badge">11 // REGIONAL SUMMITS &amp; ARTS</span>
+                    <span class="tunnel-frame__coord">SOUTH SUMMIT &amp; SOUTHFEST</span>
+                  </div>
+                  <h3 class="tunnel-frame__title">COMMUNITY RELATIONS &amp; CREATIVE PURSUITS</h3>
+                  <p class="tunnel-frame__subtitle">REGIONAL RELATIONS LEAD • DANCER • MOBILE PHOTOGRAPHER</p>
+                  <div class="tunnel-frame__tags">
+                    <span class="tunnel-frame__tag">AWS Community Day (300+ Attendees)</span>
+                    <span class="tunnel-frame__tag">Event Branding &amp; Visuals</span>
+                    <span class="tunnel-frame__tag">Modern &amp; Cultural Dance</span>
+                    <span class="tunnel-frame__tag">Self-Built Micro Tools</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Frame 12: Selected Works Destination -->
+              <div class="tunnel-frame tunnel-frame--12" data-frame="11">
+                <div class="tunnel-frame__card tunnel-frame__card--accent">
+                  <div class="tunnel-frame__meta-row">
+                    <span class="tunnel-frame__badge">12 // PRODUCTION ARRIVAL</span>
+                    <span class="tunnel-frame__coord tunnel-frame__coord--accent">SOLAR ZENITH // 01:15 PM</span>
+                  </div>
+                  <h3 class="tunnel-frame__title tunnel-frame__title--accent">SELECTED WORKS</h3>
+                  <p class="tunnel-frame__subtitle">EXPLORE 6 PRODUCTION CASE STUDIES</p>
+                  <div class="tunnel-frame__tags">
+                    <span class="tunnel-frame__tag tunnel-frame__tag--accent">ARAL System</span>
+                    <span class="tunnel-frame__tag tunnel-frame__tag--accent">PUP SkillSwap</span>
+                    <span class="tunnel-frame__tag tunnel-frame__tag--accent">AWS re/Start TCO</span>
+                    <span class="tunnel-frame__tag tunnel-frame__tag--accent">Weather ETL</span>
+                    <span class="tunnel-frame__tag tunnel-frame__tag--accent">LIBRO App</span>
+                    <span class="tunnel-frame__tag tunnel-frame__tag--accent">JoeBanana VBA</span>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Subtle HUD Reticle & Guiding Cue -->
+          <div class="tunnel-hud" aria-hidden="true">
+            <div class="tunnel-hud__reticle"></div>
+            <div class="tunnel-hud__prompt">
+              <span class="guiding-cue guiding-cue--accent">FALLING INTO CHAPTER 02</span>
+              <span class="guiding-cue">SCROLL TO DESCEND ↓</span>
+            </div>
+          </div>
+
+          <!-- Accessible Reduced-Motion Crossfade Fallback (WCAG 2.3.3) -->
+          <div class="tunnel-fallback" aria-hidden="true">
+            <div class="tunnel-fallback__card">
+              <span class="chapter-meta">Chapter Transition</span>
+              <h2 class="section-title">Leaving Dawn // Entering Afternoon</h2>
+              <p class="lead-text">
+                Progressing from morning reflections into Chapter 02: Selected Works.
+              </p>
+              <div class="tunnel-fallback__meta">
+                <span class="guiding-cue guiding-cue--accent">MIDDAY AHEAD // 01:15 PM</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================================================================
+           CHAPTER 02: AFTERNOON (Solar Zenith / Selected Work)
+           Horizontal Side-Panel Architecture (kolfest.bermet.design reference)
+           Conforms to BRIEF.md Section 4, 6, 9 & AGENTS.md
+           =================================================================== -->
+      <section
+        id="chapter-afternoon"
+        class="chapter chapter--afternoon"
+        data-chapter="afternoon"
+        aria-label="Chapter 02: Afternoon — Selected Work"
+      >
+        <div class="projects-horizontal-viewport">
+          <!-- Top Horizontal Header & Progress Navigation Dock -->
+          <div class="container projects-header-wrap">
+            <div class="chapter-intro">
+              <div>
+                <div class="chapter-meta">
+                  <span>Chapter 02 // Midday Focus</span>
+                </div>
+                <h2 class="section-title">Selected Works</h2>
+              </div>
+              <div class="projects-hud" aria-live="polite">
+                <div class="projects-counter">
+                  <span id="projects-active-moment" class="projects-counter__current">01</span>
+                  <span class="projects-counter__sep">/</span>
+                  <span class="projects-counter__total">06</span>
+                </div>
+                <div class="projects-progress-track" aria-hidden="true">
+                  <div id="projects-progress-bar" class="projects-progress-bar"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Horizontal Sliding Track Container -->
+          <div class="projects-track-wrap" tabindex="0" role="region" aria-label="Selected Projects Carousel">
+            <div class="projects-track">
+              
+              <!-- Project Moment 01: ARAL Attendance -->
+              <article class="project-panel" id="project-panel-01" aria-labelledby="project-01-title" data-index="1" data-chapter="afternoon">
+                <div class="project-panel__inner">
+                  <!-- 1. Authentic Project Media on Top -->
+                  <div class="project-media-preview" aria-label="ARAL System live screenshot">
+                    <img src="./assets/projects/aral-attendance.png" alt="ARAL Attendance Real-Time Management System Interface at Santa Rosa ES Central III" class="project-media-img" loading="lazy" />
+                  </div>
+
+                  <!-- 2. Content Area Below -->
+                  <div class="project-panel__content">
+                    <div class="project-card__header">
+                      <span class="project-card__index">MOMENT 01</span>
+                      <span class="project-card__tag">AUTOMATION &amp; SYSTEMS</span>
+                    </div>
+                    <h3 id="project-01-title" class="item-title">ARAL Attendance Platform</h3>
+                    <p class="project-card__summary">
+                      Real-time classroom attendance engine with transactional mutex locks and automated parent telemetry. 1,200+ monthly dispatches with zero duplicate alerts.
+                    </p>
+
+                    <div class="project-pill-tags">
+                      <span class="project-pill-tag project-pill-tag--accent">1,200+ Dispatches</span>
+                      <span class="project-pill-tag">Google Apps Script</span>
+                      <span class="project-pill-tag">Vitest 100% Pass</span>
+                    </div>
+
+                    <div class="project-panel__actions">
+                      <a href="https://github.com/jjoosseepphh11" target="_blank" rel="noopener noreferrer" class="btn-pill-primary" aria-label="Explore ARAL project on GitHub">
+                        <span>Explore System ↗</span>
+                      </a>
+                      <a href="https://github.com/jjoosseepphh11" target="_blank" rel="noopener noreferrer" class="btn-pill-secondary" aria-label="View ARAL source on GitHub">
+                        <span>GitHub ↗</span>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </article>
+
+              <!-- Project Moment 02: PUP SkillSwap -->
+              <article class="project-panel" id="project-panel-02" aria-labelledby="project-02-title" data-index="2" data-chapter="afternoon">
+                <div class="project-panel__inner">
+                  <!-- 1. Authentic Project Media on Top -->
+                  <div class="project-media-preview" aria-label="PUP SkillSwap command center screenshot">
+                    <img src="./assets/projects/pup-skillswap.png" alt="PUP SkillSwap Strategic Skill Exchange Command Center Dashboard" class="project-media-img" loading="lazy" />
+                  </div>
+
+                  <!-- 2. Content Area Below -->
+                  <div class="project-panel__content">
+                    <div class="project-card__header">
+                      <span class="project-card__index">MOMENT 02</span>
+                      <span class="project-card__tag">BACKEND &amp; CLOUD</span>
+                    </div>
+                    <h3 id="project-02-title" class="item-title">PUP SkillSwap Platform</h3>
+                    <p class="project-card__summary">
+                      High-throughput peer-to-peer student skill exchange with containerized FastAPI REST, DynamoDB, and Argon2id security. Sub-50ms query persistence.
+                    </p>
+
+                    <div class="project-pill-tags">
+                      <span class="project-pill-tag project-pill-tag--accent">FastAPI REST</span>
+                      <span class="project-pill-tag">DynamoDB</span>
+                      <span class="project-pill-tag">Docker</span>
+                    </div>
+
+                    <div class="project-panel__actions">
+                      <a href="https://github.com/jjoosseepphh11" target="_blank" rel="noopener noreferrer" class="btn-pill-primary" aria-label="Explore PUP SkillSwap on GitHub">
+                        <span>Explore Cloud API ↗</span>
+                      </a>
+                      <a href="https://github.com/jjoosseepphh11" target="_blank" rel="noopener noreferrer" class="btn-pill-secondary" aria-label="View PUP SkillSwap source on GitHub">
+                        <span>GitHub ↗</span>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </article>
+
+              <!-- Project Moment 03: Edukasyon.ph AWS re/Start Automation -->
+              <article class="project-panel" id="project-panel-03" aria-labelledby="project-03-title" data-index="3" data-chapter="sunset">
+                <div class="project-panel__inner">
+                  <!-- 1. Authentic Project Media on Top -->
+                  <div class="project-media-preview" aria-label="Edukasyon.ph AWS re/Start attendance notification screenshot">
+                    <img src="./assets/projects/aws-attendance.png" alt="Edukasyon.ph AWS re/Start Attendance Confirmation Notification" class="project-media-img" loading="lazy" />
+                  </div>
+
+                  <!-- 2. Content Area Below -->
+                  <div class="project-panel__content">
+                    <div class="project-card__header">
+                      <span class="project-card__index">MOMENT 03</span>
+                      <span class="project-card__tag">CLOUD AUTOMATION &amp; DEV</span>
+                    </div>
+                    <h3 id="project-03-title" class="item-title">Edukasyon.ph Attendance Engine</h3>
+                    <p class="project-card__summary">
+                      Google Workspace automation integrating Calendar &amp; Meet telemetry with deterministic 5-tier matching. Slashed reconciliation cycle by 93%.
+                    </p>
+
+                    <div class="project-pill-tags">
+                      <span class="project-pill-tag project-pill-tag--accent">93% Faster Sync</span>
+                      <span class="project-pill-tag">Google Meet API</span>
+                      <span class="project-pill-tag">Zero Duplicates</span>
+                    </div>
+
+                    <div class="project-panel__actions">
+                      <a href="https://github.com/jjoosseepphh11" target="_blank" rel="noopener noreferrer" class="btn-pill-primary" aria-label="Explore Edukasyon.ph attendance engine on GitHub">
+                        <span>Explore Pipeline ↗</span>
+                      </a>
+                      <a href="https://github.com/jjoosseepphh11" target="_blank" rel="noopener noreferrer" class="btn-pill-secondary" aria-label="View attendance engine source on GitHub">
+                        <span>GitHub ↗</span>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </article>
+
+              <!-- Project Moment 04: Serverless Philippine Weather ETL Pipeline -->
+              <article class="project-panel" id="project-panel-04" aria-labelledby="project-04-title" data-index="4" data-chapter="sunset">
+                <div class="project-panel__inner">
+                  <!-- 1. Procedural Media Frame on Top -->
+                  <div class="project-media-placeholder" aria-label="Weather ETL Pipeline visual schematic">
+                    <svg class="procedural-wireframe" viewBox="0 0 600 375" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                      <path d="M100 200 C140 140, 220 140, 260 200 C300 130, 420 130, 460 200 C500 150, 560 180, 560 220 C560 260, 100 260, 100 200 Z" stroke="currentColor" stroke-width="1.2" stroke-dasharray="3 3" />
+                      <line x1="180" y1="260" x2="160" y2="320" stroke="currentColor" stroke-width="1" />
+                      <line x1="280" y1="260" x2="260" y2="320" stroke="currentColor" stroke-width="1" />
+                      <line x1="380" y1="260" x2="360" y2="320" stroke="currentColor" stroke-width="1" />
+                      <line x1="480" y1="260" x2="460" y2="320" stroke="currentColor" stroke-width="1" />
+                      <rect x="200" y="50" width="200" height="60" rx="4" stroke="currentColor" stroke-width="1" />
+                    </svg>
+                  </div>
+
+                  <!-- 2. Content Area Below -->
+                  <div class="project-panel__content">
+                    <div class="project-card__header">
+                      <span class="project-card__index">MOMENT 04</span>
+                      <span class="project-card__tag">DATA &amp; CLOUD PIPELINES</span>
+                    </div>
+                    <h3 id="project-04-title" class="item-title">Weather ETL Pipeline</h3>
+                    <p class="project-card__summary">
+                      Event-driven meteorological pipeline orchestrating EventBridge, Lambda (Boto3), S3, and Redshift Data API for automated environmental ingestion.
+                    </p>
+
+                    <div class="project-pill-tags">
+                      <span class="project-pill-tag project-pill-tag--accent">AWS Lambda (Boto3)</span>
+                      <span class="project-pill-tag">Amazon Redshift</span>
+                      <span class="project-pill-tag">EventBridge Cron</span>
+                    </div>
+
+                    <div class="project-panel__actions">
+                      <a href="https://github.com/jjoosseepphh11" target="_blank" rel="noopener noreferrer" class="btn-pill-primary" aria-label="Explore Weather ETL Pipeline on GitHub">
+                        <span>Explore ETL ↗</span>
+                      </a>
+                      <a href="https://github.com/jjoosseepphh11" target="_blank" rel="noopener noreferrer" class="btn-pill-secondary" aria-label="View Weather ETL source on GitHub">
+                        <span>GitHub ↗</span>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </article>
+
+              <!-- Project Moment 05: LIBRO Multimedia App -->
+              <article class="project-panel" id="project-panel-05" aria-labelledby="project-05-title" data-index="5" data-chapter="evening">
+                <div class="project-panel__inner">
+                  <!-- 1. Authentic Project Media on Top -->
+                  <div class="project-media-preview" aria-label="LIBRO Interactive Multimedia Story Reader and Narration Canvas screenshot">
+                    <img src="./assets/projects/libro.png" alt="LIBRO Interactive Multimedia Story Reader and Narration Canvas" class="project-media-img" loading="lazy" />
+                  </div>
+
+                  <!-- 2. Content Area Below -->
+                  <div class="project-panel__content">
+                    <div class="project-card__header">
+                      <span class="project-card__index">MOMENT 05</span>
+                      <span class="project-card__tag">FRONTEND &amp; UX RESEARCH</span>
+                    </div>
+                    <h3 id="project-05-title" class="item-title">LIBRO Multimedia App</h3>
+                    <p class="project-card__summary">
+                      Accessible literacy web application with synchronized bilingual audio narration and live comprehension scoring. 3.79/4.00 satisfaction across 68 students.
+                    </p>
+
+                    <div class="project-pill-tags">
+                      <span class="project-pill-tag project-pill-tag--accent">React &amp; TypeScript</span>
+                      <span class="project-pill-tag">Synchronized Audio</span>
+                      <span class="project-pill-tag">3.79/4.00 GUI</span>
+                    </div>
+
+                    <div class="project-panel__actions">
+                      <a href="https://iv-of-1-2.github.io/InteractiveBook/" target="_blank" rel="noopener noreferrer" class="btn-pill-primary" aria-label="Launch live LIBRO web app on GitHub Pages">
+                        <span>Launch App ↗</span>
+                      </a>
+                      <a href="https://github.com/jjoosseepphh11" target="_blank" rel="noopener noreferrer" class="btn-pill-secondary" aria-label="View LIBRO source on GitHub">
+                        <span>GitHub ↗</span>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </article>
+
+              <!-- Project Moment 06: Studio Elite Platform -->
+              <article class="project-panel" id="project-panel-06" aria-labelledby="project-06-title" data-index="6" data-chapter="evening">
+                <div class="project-panel__inner">
+                  <!-- 1. Authentic Project Media on Top -->
+                  <div class="project-media-preview" aria-label="Studio Elite Next.js 16 Web Application screenshot">
+                    <img src="./assets/projects/studio-elite.png" alt="Studio Elite Official BSIT Academic Society Platform" class="project-media-img" loading="lazy" />
+                  </div>
+
+                  <!-- 2. Content Area Below -->
+                  <div class="project-panel__content">
+                    <div class="project-card__header">
+                      <span class="project-card__index">MOMENT 06</span>
+                      <span class="project-card__tag">NEXT.JS &amp; 3D GRAPHICS</span>
+                    </div>
+                    <h3 id="project-06-title" class="item-title">Studio Elite Platform</h3>
+                    <p class="project-card__summary">
+                      Flagship BSIT academic society platform built with Next.js 16 (Turbopack), React 19, and procedural Three.js graphics. 60fps compositor-locked kinetics.
+                    </p>
+
+                    <div class="project-pill-tags">
+                      <span class="project-pill-tag project-pill-tag--accent">Next.js 16 (Turbopack)</span>
+                      <span class="project-pill-tag">Three.js Canvas</span>
+                      <span class="project-pill-tag">React 19</span>
+                    </div>
+
+                    <div class="project-panel__actions">
+                      <a href="https://github.com/jjoosseepphh11" target="_blank" rel="noopener noreferrer" class="btn-pill-primary" aria-label="Explore Studio Elite on GitHub">
+                        <span>Explore Platform ↗</span>
+                      </a>
+                      <a href="https://github.com/jjoosseepphh11" target="_blank" rel="noopener noreferrer" class="btn-pill-secondary" aria-label="View Studio Elite source on GitHub">
+                        <span>GitHub ↗</span>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </article>
+
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================================================================
+           CHAPTER 03: EVENING (Dusk / About)
+           =================================================================== -->
+      <section
+        id="chapter-evening"
+        class="chapter chapter--evening"
+        data-chapter="evening"
+        aria-label="Chapter 03: Evening — About & Philosophy"
+      >
+        <div class="container">
+          <div class="chapter-meta">
+            <span>Chapter 03 // Engineering &amp; Craft</span>
+          </div>
+          <h2 class="section-title">Craft &amp; Principles</h2>
+
+          <div class="principles-statement-wrap">
+            <!-- Left Anchor: Credentials & Statement -->
+            <div class="principles-lead-col">
+              <span class="guiding-cue guiding-cue--accent">DISCIPLINE &amp; CRAFT</span>
+              <p class="principles-lead-text">
+                Crafting clean, reliable backend systems, cloud architectures, and thoughtful digital experiences.
+              </p>
+              
+              <div class="principles-academic-card">
+                <span class="principles-academic-title">Polytechnic University of the Philippines</span>
+                <span class="principles-academic-sub">
+                  Santa Rosa Campus • BSIT Student • AWS Learning Club – Polar Lead
+                </span>
+              </div>
+            </div>
+
+            <!-- Right: Leo Parpeix-inspired Marked Display Words -->
+            <div class="principles-display-block">
+              <div class="principles-display-line">
+                <span class="principles-word">BUILDING</span>
+                <span class="principles-mark" aria-hidden="true">
+                  <svg class="principles-mark__svg" viewBox="0 0 20 20" fill="currentColor"><path d="M10 0L12 8L20 10L12 12L10 20L8 12L0 10L8 8Z"/></svg>
+                </span>
+                <span class="principles-word principles-word--accent">RELIABLE</span>
+              </div>
+              <div class="principles-display-line">
+                <span class="principles-word">SYSTEMS WITH</span>
+                <span class="principles-word principles-word--accent">PURPOSE</span>
+              </div>
+              <div class="principles-display-line">
+                <span class="principles-word">SPEED,</span>
+                <span class="principles-mark" aria-hidden="true">
+                  <svg class="principles-mark__svg" viewBox="0 0 20 20" fill="currentColor"><path d="M10 0L12 8L20 10L12 12L10 20L8 12L0 10L8 8Z"/></svg>
+                </span>
+                <span class="principles-word">ELEGANCE</span>
+              </div>
+              <div class="principles-display-line">
+                <span class="principles-word principles-word--accent">&amp;</span>
+                <span class="principles-word">HUMAN CONNECTION.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================================================================
+           CHAPTER 04: NIGHT (Midnight / Contact)
+           =================================================================== -->
+      <section
+        id="chapter-night"
+        class="chapter chapter--night"
+        data-chapter="night"
+        aria-label="Chapter 04: Night — Closing & Contact"
+      >
+        <!-- Picture-Wide Cinematic Landscape Profile Canvas (Leo Parpeix Architectural Aesthetic) -->
+        <div class="landscape-profile-canvas landscape-profile-canvas--wide" id="contact" role="region" aria-label="End Profile & Contact">
+          
+          <!-- Landscape Photography Background with Multi-Layer Atmospheric Scrim -->
+          <div class="landscape-canvas__bg" aria-hidden="true">
+            <img
+              src="./assets/profile/patrick-landscape.jpg"
+              alt=""
+              class="landscape-canvas__img"
+              loading="lazy"
+            />
+            <div class="landscape-canvas__scrim"></div>
+          </div>
+
+          <!-- Immersive Overlay Content -->
+          <div class="landscape-canvas__content">
+            <!-- Center: Leo Parpeix Signature Monumental Headline with Ghost Effect -->
+            <div class="landscape-hero-headline" id="landscape-headline" role="heading" aria-level="2">
+              <div class="landscape-headline-line landscape-headline-line--1" data-depth="0.18">
+                <span>LET'S BUILD</span>
+              </div>
+              <div class="landscape-headline-line landscape-headline-line--2" data-depth="0.32">
+                <span>AN ENDURING</span>
+              </div>
+              <div class="landscape-headline-line landscape-headline-line--3 landscape-headline-line--ghost" data-depth="0.48">
+                <span>JOURNEY <span class="headline-accent-star" aria-hidden="true">✦</span></span>
+              </div>
+            </div>
+
+            <!-- Bottom Row: Name & Pure Typographic Hyperlinks (Letters Only) -->
+            <div class="landscape-canvas__bottom-block">
+              <div class="landscape-name-row">
+                <h3 class="landscape-name">Patrick Dohn Joseph Lontok</h3>
+              </div>
+
+              <!-- Pure Typographic Hyperlinks -->
+              <div class="landscape-connect-links" role="navigation" aria-label="Direct contact channels">
+                <a href="mailto:patrickalcalalontok@gmail.com" class="editorial-link editorial-link--accent" aria-label="Send direct email to Patrick Lontok">
+                  <span class="editorial-link__text">Email Inquiries</span>
+                  <span class="editorial-link__arrow" aria-hidden="true">↗</span>
+                </a>
+                <span class="editorial-link__sep" aria-hidden="true">•</span>
+                <a href="https://www.linkedin.com/in/patrick-dohn-joseph-lontok-770967356/" target="_blank" rel="noopener noreferrer" class="editorial-link" aria-label="Visit Patrick Dohn Joseph Lontok on LinkedIn">
+                  <span class="editorial-link__text">LinkedIn</span>
+                  <span class="editorial-link__arrow" aria-hidden="true">↗</span>
+                </a>
+                <span class="editorial-link__sep" aria-hidden="true">•</span>
+                <a href="https://github.com/jjoosseepphh11" target="_blank" rel="noopener noreferrer" class="editorial-link" aria-label="Visit Patrick Lontok on GitHub">
+                  <span class="editorial-link__text">GitHub</span>
+                  <span class="editorial-link__arrow" aria-hidden="true">↗</span>
+                </a>
+                <span class="editorial-link__sep" aria-hidden="true">•</span>
+                <a href="tel:+639123479575" class="editorial-link" aria-label="Call or text Patrick Lontok directly">
+                  <span class="editorial-link__text">(+63) 912-347-9575</span>
+                  <span class="editorial-link__arrow" aria-hidden="true">↗</span>
+                </a>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <div class="container">
+          <footer class="site-footer" role="contentinfo">
+            <div>
+              <span>Patrick Dohn Joseph A. Lontok © 2026</span>
+              <span style="margin: 0 var(--space-xs);">•</span>
+              <span>Santa Rosa City, Laguna, Philippines</span>
+            </div>
+            <div>
+              <span class="guiding-cue">Patrick Dohn Joseph A. Lontok • Systems &amp; Cloud Engineering</span>
+            </div>
+            <div>
+              <a href="#chapter-morning" class="action-link" style="padding: 0; font-size: var(--text-label);" aria-label="Return to morning dawn at top of page">
+                Return to Dawn ↑
+              </a>
+            </div>
+          </footer>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Ambient Cloud / Gas Puff Trail for Custom Cursor -->
+    <div id="cursor-trail" class="cursor-trail" aria-hidden="true"></div>
+
+    <!-- ===================================================================
+         INTERACTIVE CONTEXTUAL CURSOR (Leo's Portfolio Style)
+         Communicates interaction cues dynamically (DRAG, SCROLL, EXPLORE)
+         =================================================================== -->
+    <div id="custom-cursor" class="custom-cursor" aria-hidden="true">
+      <div class="custom-cursor__dot"></div>
+      <div class="custom-cursor__ring">
+        <span class="custom-cursor__label"></span>
+      </div>
+    </div>
+
+    <!-- ===================================================================
+         PROCEDURAL BASH-CLOUD SOFTWARE MASCOT
+         Code-generated SVG software tool mascot.
+         Jumps into the 3D tunnel, tracks cursor, and reacts to chapters.
+         =================================================================== -->
+    <div id="bash-mascot" class="bash-mascot" aria-hidden="true" title="Bash Cloud Companion — Click me!">
+      <svg class="bash-mascot__svg" viewBox="0 0 100 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="cloudGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="var(--theme-accent)" stop-opacity="0.25" />
+            <stop offset="100%" stop-color="var(--theme-surface)" stop-opacity="0.95" />
+          </linearGradient>
+        </defs>
+        <!-- Soft Outer Cloud Aura -->
+        <path class="bash-mascot__cloud" d="M25 60 C14 60 10 50 12 40 C10 30 20 20 32 22 C38 10 56 8 66 18 C76 12 88 20 87 34 C95 38 96 54 82 60 Z" fill="url(#cloudGrad)" stroke="var(--theme-border)" stroke-width="1.5" />
+        <!-- Terminal Visor Screen -->
+        <rect class="bash-mascot__screen" x="28" y="28" width="44" height="26" rx="4" fill="#07111E" stroke="var(--theme-accent)" stroke-width="1" />
+        <!-- Bash Terminal Prompt & Eyes -->
+        <text class="bash-mascot__prompt" x="33" y="44" font-family="JetBrains Mono, monospace" font-size="9" fill="var(--theme-accent)" font-weight="bold">&gt;_</text>
+        <circle class="bash-mascot__eye bash-mascot__eye--left" cx="54" cy="41" r="2.2" fill="var(--theme-accent)" />
+        <circle class="bash-mascot__eye bash-mascot__eye--right" cx="63" cy="41" r="2.2" fill="var(--theme-accent)" />
+        <!-- Software Spark Antenna -->
+        <path class="bash-mascot__spark" d="M50 12 L50 4 M46 8 L54 8" stroke="var(--theme-accent)" stroke-width="1.5" stroke-linecap="round" />
+      </svg>
+      <div class="bash-mascot__bubble">
+        <span class="bash-mascot__speech">&gt;_ hello</span>
+      </div>
+    </div>
+
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

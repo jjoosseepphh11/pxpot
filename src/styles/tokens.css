@@ -1,0 +1,187 @@
+/* ==========================================================================
+   THEME DESIGN TOKENS (tokens.css)
+   Conforms to BRIEF.md & AGENTS.md
+   Palette: Option 1 (Atmospheric Dawn to Obsidian)
+   Typography: Pairing A (Modernist Sans + Technical Mono)
+   ========================================================================== */
+
+:root {
+  /* -------------------------------------------------------------------------
+     1. COLOR PALETTES ACROSS CHAPTERS (One day, in chapters)
+     ------------------------------------------------------------------------- */
+
+  /* Chapter 1: Morning (Dawn / Soft Sky Blue) */
+  --ch-morning-bg: #EAF3FA;
+  --ch-morning-surface: #FFFFFF;
+  --ch-morning-text: #0A1C2E;
+  --ch-morning-muted: #24486E;
+  --ch-morning-accent: #B45309; /* Deep Solar Gold (WCAG AA 4.5:1 on light sky) */
+  --ch-morning-accent-light: #F59E0B; /* Bright Solar Yellow */
+  --ch-morning-accent-rgb: 180, 83, 9;
+  --ch-morning-border: rgba(10, 28, 46, 0.12);
+  --ch-morning-glow: radial-gradient(circle at 50% 120%, rgba(255, 255, 255, 0.85) 0%, rgba(186, 225, 255, 0.35) 40%, rgba(234, 243, 250, 0) 70%);
+
+  /* Chapter 2: Afternoon (Solar Zenith / Vibrant Cerulean Sky) */
+  --ch-afternoon-bg: #D4E6F6;
+  --ch-afternoon-surface: #FFFFFF;
+  --ch-afternoon-text: #071728;
+  --ch-afternoon-muted: #1E3F66;
+  --ch-afternoon-accent: #92400E; /* Amber Sun (WCAG AA 5.4:1 on cerulean) */
+  --ch-afternoon-accent-light: #FBBF24; /* Electric Solar Yellow */
+  --ch-afternoon-accent-rgb: 146, 64, 14;
+  --ch-afternoon-border: rgba(7, 23, 40, 0.14);
+  --ch-afternoon-glow: radial-gradient(circle at 75% 20%, rgba(255, 255, 255, 0.75) 0%, rgba(160, 210, 250, 0.3) 45%, rgba(212, 230, 246, 0) 70%);
+
+  /* Chapter 3: Evening (Dusk / Twilight Navy) */
+  --ch-evening-bg: #11253E;
+  --ch-evening-surface: #1A3455;
+  --ch-evening-text: #FFFFFF;
+  --ch-evening-muted: #A3C5E4;
+  --ch-evening-accent: #FBBF24; /* Radiant Solar Yellow (WCAG AAA 9.1:1 on navy) */
+  --ch-evening-accent-light: #FDE68A;
+  --ch-evening-accent-rgb: 251, 191, 36;
+  --ch-evening-border: rgba(255, 255, 255, 0.18);
+  --ch-evening-glow: radial-gradient(circle at 30% 85%, rgba(251, 191, 36, 0.18) 0%, rgba(26, 52, 85, 0.4) 40%, rgba(17, 37, 62, 0) 75%);
+
+  /* Chapter 4: Night (Midnight / Deep Ocean Navy Abyss) */
+  --ch-night-bg: #070F1E;
+  --ch-night-surface: #0E1D33;
+  --ch-night-text: #FFFFFF;
+  --ch-night-muted: #9BB6D3;
+  --ch-night-accent: #FCD34D; /* Luminous Cyber Yellow (WCAG AAA 13.3:1 on deep navy) */
+  --ch-night-accent-light: #FEF08A;
+  --ch-night-accent-rgb: 252, 211, 77;
+  --ch-night-border: rgba(255, 255, 255, 0.16);
+  --ch-night-glow: radial-gradient(circle at 50% 5%, rgba(252, 211, 77, 0.12) 0%, rgba(14, 29, 51, 0.5) 45%, rgba(7, 15, 30, 0) 75%);
+
+  /* Active Theme Defaults (Morning as initial state) */
+  --theme-bg: var(--ch-morning-bg);
+  --theme-surface: var(--ch-morning-surface);
+  --theme-text: var(--ch-morning-text);
+  --theme-muted: var(--ch-morning-muted);
+  --theme-accent: var(--ch-morning-accent);
+  --theme-accent-rgb: var(--ch-morning-accent-rgb);
+  --theme-border: var(--ch-morning-border);
+  --theme-glow: var(--ch-morning-glow);
+
+  /* -------------------------------------------------------------------------
+     2. TYPOGRAPHY SCALE (Fluid clamp values for responsive harmony)
+     ------------------------------------------------------------------------- */
+  --font-display: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Space Mono', SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
+  /* Font Weights */
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-semibold: 600;
+  --fw-bold: 700;
+  --fw-extrabold: 800;
+
+  /* Type Scale — Calibrated for mobile (320px) through ultrawide (1920px) */
+  --text-hero: clamp(2.1rem, 5.8vw, 6.2rem);
+  --text-display: clamp(1.75rem, 4.5vw, 5rem);
+  --text-h1: clamp(1.4rem, 3.2vw, 3rem);
+  --text-h2: clamp(1.15rem, 2vw, 2.15rem);
+  --text-h3: clamp(1rem, 1.5vw, 1.5rem);
+  --text-body-lg: clamp(0.95rem, 1.2vw, 1.2rem);
+  --text-body: clamp(0.875rem, 1vw, 1rem);
+  --text-body-sm: clamp(0.775rem, 0.85vw, 0.875rem);
+  --text-label: clamp(0.675rem, 0.75vw, 0.775rem);
+
+  /* Line Heights */
+  --lh-tight: 1.05;
+  --lh-snug: 1.25;
+  --lh-normal: 1.55;
+  --lh-relaxed: 1.75;
+
+  /* Letter Spacing */
+  --ls-hero: -0.04em;
+  --ls-tight: -0.025em;
+  --ls-normal: 0em;
+  --ls-wide: 0.06em;
+  --ls-mono: 0.08em;
+
+  /* -------------------------------------------------------------------------
+     3. SPATIAL & LAYOUT TOKENS
+     ------------------------------------------------------------------------- */
+  --space-unit: 8px;
+  --space-2xs: calc(var(--space-unit) * 0.5); /* 4px */
+  --space-xs:  calc(var(--space-unit) * 1);   /* 8px */
+  --space-sm:  calc(var(--space-unit) * 2);   /* 16px */
+  --space-md:  calc(var(--space-unit) * 3);   /* 24px */
+  --space-lg:  calc(var(--space-unit) * 5);   /* 40px */
+  --space-xl:  calc(var(--space-unit) * 8);   /* 64px */
+  --space-2xl: calc(var(--space-unit) * 12);  /* 96px */
+  --space-3xl: calc(var(--space-unit) * 16);  /* 128px */
+
+  --container-max: 1380px;
+  --gutter: clamp(1rem, 3.5vw, 3.5rem);
+  --section-padding-y: clamp(4.5rem, 10vh, 10.5rem);
+
+  /* -------------------------------------------------------------------------
+     4. Z-INDEX SYSTEM
+     ------------------------------------------------------------------------- */
+  --z-bg: 0;
+  --z-content: 10;
+  --z-header: 100;
+  --z-overlay: 200;
+  --z-loader: 300;
+
+  /* -------------------------------------------------------------------------
+     5. EASING & TIMING TOKENS (Transform & Opacity Only)
+     ------------------------------------------------------------------------- */
+  --ease-calm: cubic-bezier(0.16, 1, 0.3, 1);       /* Smooth decelerate */
+  --ease-subtle: cubic-bezier(0.25, 0.1, 0.25, 1);  /* Natural transition */
+  --dur-fast: 200ms;
+  --dur-normal: 400ms;
+  --dur-slow: 750ms;
+}
+
+/* -------------------------------------------------------------------------
+   Active Chapter Theme Scoping
+   Tokens adapt per chapter container; body[data-active-chapter] controls persistent nav
+   ------------------------------------------------------------------------- */
+[data-chapter="morning"] {
+  --theme-bg: var(--ch-morning-bg);
+  --theme-surface: var(--ch-morning-surface);
+  --theme-text: var(--ch-morning-text);
+  --theme-muted: var(--ch-morning-muted);
+  --theme-accent: var(--ch-morning-accent);
+  --theme-accent-rgb: var(--ch-morning-accent-rgb);
+  --theme-border: var(--ch-morning-border);
+  --theme-glow: var(--ch-morning-glow);
+}
+
+[data-chapter="afternoon"] {
+  --theme-bg: var(--ch-afternoon-bg);
+  --theme-surface: var(--ch-afternoon-surface);
+  --theme-text: var(--ch-afternoon-text);
+  --theme-muted: var(--ch-afternoon-muted);
+  --theme-accent: var(--ch-afternoon-accent);
+  --theme-accent-rgb: var(--ch-afternoon-accent-rgb);
+  --theme-border: var(--ch-afternoon-border);
+  --theme-glow: var(--ch-afternoon-glow);
+}
+
+[data-chapter="evening"] {
+  --theme-bg: var(--ch-evening-bg);
+  --theme-surface: var(--ch-evening-surface);
+  --theme-text: var(--ch-evening-text);
+  --theme-muted: var(--ch-evening-muted);
+  --theme-accent: var(--ch-evening-accent);
+  --theme-accent-rgb: var(--ch-evening-accent-rgb);
+  --theme-border: var(--ch-evening-border);
+  --theme-glow: var(--ch-evening-glow);
+}
+
+[data-chapter="night"] {
+  --theme-bg: var(--ch-night-bg);
+  --theme-surface: var(--ch-night-surface);
+  --theme-text: var(--ch-night-text);
+  --theme-muted: var(--ch-night-muted);
+  --theme-accent: var(--ch-night-accent);
+  --theme-accent-rgb: var(--ch-night-accent-rgb);
+  --theme-border: var(--ch-night-border);
+  --theme-glow: var(--ch-night-glow);
+}

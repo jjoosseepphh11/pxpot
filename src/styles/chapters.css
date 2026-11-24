@@ -1,0 +1,1151 @@
+/* ==========================================================================
+   CHAPTER STYLES (chapters.css)
+   Defines the 4 day-to-night chapters and their unique atmospheres
+   ========================================================================== */
+
+/* -------------------------------------------------------------------------
+   Atmospheric Day-to-Night Backdrop
+   GPU-composited opacity planes for 60fps smooth palette interpolation
+   ------------------------------------------------------------------------- */
+.atmosphere-backdrop {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: var(--z-bg);
+  pointer-events: none;
+  overflow: hidden;
+  background-color: var(--ch-morning-bg);
+  transition: background-color var(--dur-slow) var(--ease-calm);
+}
+
+.atmosphere-plane {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  will-change: opacity;
+  pointer-events: none;
+}
+
+/* Chapter 01: Morning Atmosphere */
+.atmosphere-plane--morning {
+  background-color: var(--ch-morning-bg);
+  background-image: var(--ch-morning-glow);
+  opacity: 1; /* Initial state at top of page */
+}
+
+/* Chapter 02: Afternoon Atmosphere */
+.atmosphere-plane--afternoon {
+  background-color: var(--ch-afternoon-bg);
+  background-image: var(--ch-afternoon-glow);
+}
+
+/* Chapter 03: Evening Atmosphere */
+.atmosphere-plane--evening {
+  background-color: var(--ch-evening-bg);
+  background-image: var(--ch-evening-glow);
+}
+
+/* Chapter 04: Night Atmosphere */
+.atmosphere-plane--night {
+  background-color: var(--ch-night-bg);
+  background-image: var(--ch-night-glow);
+}
+
+/* -------------------------------------------------------------------------
+   Celestial Sky Scene (Procedural Sun, Sunset Horizon, Stars & Luminous Moon)
+   60fps GPU-composited, constrained strictly to transform & opacity
+   ------------------------------------------------------------------------- */
+.celestial-scene {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.celestial-body {
+  position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  will-change: transform, opacity;
+}
+
+/* Radiant Sun (Morning Dawn & Midday) */
+.celestial-sun {
+  width: clamp(140px, 20vw, 240px);
+  height: clamp(140px, 20vw, 240px);
+  filter: drop-shadow(0 0 45px rgba(245, 158, 11, 0.45));
+  overflow: visible;
+}
+
+.celestial-sun__svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+/* Volumetric God Rays (Seamlessly Feathered & Unclipped) */
+.sun-volumetric-rays {
+  transform-origin: 300px 300px;
+  animation: sunRaysPulse 12s ease-in-out infinite alternate;
+  pointer-events: none;
+}
+
+@keyframes sunRaysPulse {
+  0% { opacity: 0.55; transform: scale(0.96) rotate(-2deg); }
+  50% { opacity: 0.95; transform: scale(1.06) rotate(3deg); }
+  100% { opacity: 0.65; transform: scale(1) rotate(-1deg); }
+}
+
+/* Sunset Horizon Glow (Scrubbed during Midday -> Evening shift) */
+.celestial-sunset {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 55vh;
+  background: linear-gradient(
+    0deg,
+    color-mix(in srgb, #F59E0B 35%, transparent) 0%,
+    color-mix(in srgb, #E11D48 18%, transparent) 40%,
+    transparent 100%
+  );
+  opacity: 0;
+  pointer-events: none;
+  will-change: opacity;
+}
+
+/* Twilight Stars Constellation */
+.celestial-stars {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 70vh;
+  opacity: 0;
+  pointer-events: none;
+  will-change: opacity;
+}
+
+.celestial-stars__svg {
+  width: 100%;
+  height: 100%;
+}
+
+.star {
+  animation: starTwinkle 3.5s ease-in-out infinite alternate;
+}
+
+.star--2, .star--6, .star--10 { animation-delay: 1.2s; }
+.star--3, .star--7, .star--11 { animation-delay: 2.1s; }
+.star--4, .star--8 { animation-delay: 0.7s; }
+
+@keyframes starTwinkle {
+  0% { opacity: 0.35; transform: scale(0.9); }
+  100% { opacity: 0.95; transform: scale(1.15); }
+}
+
+/* Luminous Moon (Midnight Nocturne) */
+.celestial-moon {
+  width: clamp(110px, 15vw, 190px);
+  height: clamp(110px, 15vw, 190px);
+  opacity: 0;
+  filter: drop-shadow(0 0 35px rgba(56, 189, 248, 0.4));
+}
+
+.celestial-moon__svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* Ambient Procedural Sky Clouds (Continuous Slow Horizontal Drift) */
+.celestial-clouds {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 2;
+}
+
+.celestial-cloud-wrap {
+  position: absolute;
+  pointer-events: none;
+  will-change: transform;
+}
+
+.celestial-cloud-wrap--1 {
+  top: 13vh;
+  left: 0;
+  animation: cloudDriftHoriz1 90s linear infinite;
+}
+
+.celestial-cloud-wrap--2 {
+  top: 6vh;
+  left: 0;
+  animation: cloudDriftHoriz2 120s linear infinite;
+}
+
+.celestial-cloud-wrap--3 {
+  top: 36vh;
+  left: 0;
+  animation: cloudDriftHoriz3 105s linear infinite;
+}
+
+@keyframes cloudDriftHoriz1 {
+  0% { transform: translate3d(-18vw, 0, 0); }
+  50% { transform: translate3d(50vw, -8px, 0); }
+  100% { transform: translate3d(118vw, 0, 0); }
+}
+
+@keyframes cloudDriftHoriz2 {
+  0% { transform: translate3d(25vw, 0, 0); }
+  50% { transform: translate3d(85vw, 6px, 0); }
+  100% { transform: translate3d(125vw, 0, 0); }
+}
+
+@keyframes cloudDriftHoriz3 {
+  0% { transform: translate3d(-24vw, 0, 0); }
+  50% { transform: translate3d(45vw, -5px, 0); }
+  100% { transform: translate3d(120vw, 0, 0); }
+}
+
+.celestial-cloud {
+  display: block;
+  color: color-mix(in srgb, #FFFFFF 55%, transparent);
+  will-change: transform, opacity;
+  pointer-events: none;
+  filter: drop-shadow(0 8px 24px rgba(0, 0, 0, 0.06));
+}
+
+.celestial-cloud--1 {
+  width: clamp(140px, 16vw, 220px);
+  opacity: 0.75;
+}
+
+.celestial-cloud--2 {
+  width: clamp(180px, 20vw, 280px);
+  opacity: 0.65;
+}
+
+.celestial-cloud--3 {
+  width: clamp(220px, 25vw, 360px);
+  color: color-mix(in srgb, #F59E0B 40%, #FFFFFF);
+  opacity: 0.45;
+}
+
+/* Soaring Silhouette Birds (Continuous Natural Horizontal Flight & Flap) */
+.celestial-birds {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 3;
+}
+
+.celestial-birds-flight {
+  position: absolute;
+  pointer-events: none;
+  overflow: visible;
+  will-change: transform, opacity;
+}
+
+/* Flock 1: Glides horizontally across the sky from right to left */
+.celestial-birds-flight--1 {
+  top: 14vh;
+  left: 0;
+  animation: birdFlightHorizRightToLeft 36s linear infinite;
+  animation-delay: -10s;
+}
+
+/* Flock 2: Glides horizontally across the sky from left to right (interspersed altitude) */
+.celestial-birds-flight--2 {
+  top: 24vh;
+  left: 0;
+  animation: birdFlightHorizLeftToRight 44s linear infinite;
+  animation-delay: -24s;
+}
+
+@keyframes birdFlightHorizRightToLeft {
+  0%   { transform: translate3d(120vw, 0, 0); }
+  50%  { transform: translate3d(45vw, 15px, 0); }
+  100% { transform: translate3d(-30vw, 0, 0); }
+}
+
+@keyframes birdFlightHorizLeftToRight {
+  0%   { transform: translate3d(-30vw, 0, 0); }
+  50%  { transform: translate3d(55vw, -12px, 0); }
+  100% { transform: translate3d(120vw, 0, 0); }
+}
+
+.celestial-birds__svg {
+  display: block;
+  width: clamp(120px, 16vw, 190px);
+  height: auto;
+  overflow: visible;
+  color: color-mix(in srgb, var(--theme-text) 75%, transparent);
+  will-change: transform, opacity;
+}
+
+.celestial-bird {
+  animation: birdBodyUndulate 0.85s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+.celestial-bird--follow1   { animation-delay: 0.14s; }
+.celestial-bird--follow2   { animation-delay: 0.32s; }
+.celestial-bird--solo      { animation-delay: 0.08s; }
+.celestial-bird--companion { animation-delay: 0.22s; }
+
+.bird-wing-near {
+  transform-origin: 32px 13px;
+  animation: birdWingNearFlap 0.85s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+.bird-wing-far {
+  transform-origin: 28px 12px;
+  animation: birdWingFarFlap 0.85s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+.celestial-bird--follow1 .bird-wing-near,
+.celestial-bird--follow1 .bird-wing-far { animation-delay: 0.14s; }
+.celestial-bird--follow2 .bird-wing-near,
+.celestial-bird--follow2 .bird-wing-far { animation-delay: 0.32s; }
+.celestial-bird--solo .bird-wing-near,
+.celestial-bird--solo .bird-wing-far { animation-delay: 0.08s; }
+.celestial-bird--companion .bird-wing-near,
+.celestial-bird--companion .bird-wing-far { animation-delay: 0.22s; }
+
+@keyframes birdBodyUndulate {
+  0%   { transform: translateY(-3px) rotate(-2deg); }
+  50%  { transform: translateY(2px) rotate(1deg); }
+  100% { transform: translateY(-3px) rotate(-2deg); }
+}
+
+@keyframes birdWingNearFlap {
+  0%   { transform: rotate(-22deg) scaleY(1.18) skewY(-4deg); }
+  40%  { transform: rotate(4deg) scaleY(0.95) skewY(0deg); }
+  70%  { transform: rotate(26deg) scaleY(0.70) skewY(6deg); }
+  100% { transform: rotate(-22deg) scaleY(1.18) skewY(-4deg); }
+}
+
+@keyframes birdWingFarFlap {
+  0%   { transform: rotate(-18deg) scaleY(1.12) skewY(-3deg); }
+  40%  { transform: rotate(2deg) scaleY(0.96) skewY(0deg); }
+  70%  { transform: rotate(22deg) scaleY(0.74) skewY(5deg); }
+  100% { transform: rotate(-18deg) scaleY(1.12) skewY(-3deg); }
+}
+
+/* ==========================================================================
+   DISTANT ATMOSPHERIC HORIZON SILHOUETTES (Parallax Aerial Perspective)
+   ========================================================================== */
+.celestial-horizon {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: clamp(140px, 24vh, 260px);
+  pointer-events: none;
+  z-index: 2;
+  overflow: hidden;
+  will-change: transform;
+}
+
+.celestial-horizon__svg {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  will-change: transform, opacity;
+  transition: color var(--dur-slow) var(--ease-calm);
+}
+
+.celestial-horizon__svg--far {
+  color: color-mix(in srgb, #94A3B8 26%, var(--theme-bg, #0B192C));
+  opacity: 0.65;
+}
+
+.celestial-horizon__svg--near {
+  color: color-mix(in srgb, #64748B 38%, var(--theme-bg, #0B192C));
+  opacity: 0.85;
+}
+
+body[data-active-chapter="morning"] .celestial-horizon__svg--far {
+  color: color-mix(in srgb, #93C5FD 22%, #DCEBFA);
+  opacity: 0.7;
+}
+body[data-active-chapter="morning"] .celestial-horizon__svg--near {
+  color: color-mix(in srgb, #60A5FA 28%, #CBD5E1);
+  opacity: 0.85;
+}
+
+body[data-active-chapter="afternoon"] .celestial-horizon__svg--far {
+  color: color-mix(in srgb, #F59E0B 18%, #1E3A5F);
+  opacity: 0.65;
+}
+body[data-active-chapter="afternoon"] .celestial-horizon__svg--near {
+  color: color-mix(in srgb, #D97706 25%, #0F2338);
+  opacity: 0.85;
+}
+
+body[data-active-chapter="evening"] .celestial-horizon__svg--far {
+  color: color-mix(in srgb, #7C3AED 25%, #181622);
+  opacity: 0.7;
+}
+body[data-active-chapter="evening"] .celestial-horizon__svg--near {
+  color: color-mix(in srgb, #4C1D95 32%, #0E0D16);
+  opacity: 0.9;
+}
+
+body[data-active-chapter="night"] .celestial-horizon__svg--far {
+  color: #07101E;
+  opacity: 0.75;
+}
+body[data-active-chapter="night"] .celestial-horizon__svg--near {
+  color: #040811;
+  opacity: 0.95;
+}
+
+/* ==========================================================================
+   AMBIENT ATMOSPHERIC ENVIRONMENTAL PARTICLES (Sun Motes & Embers)
+   ========================================================================== */
+.celestial-motes {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 3;
+}
+
+.celestial-mote {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  will-change: transform, opacity;
+  background: color-mix(in srgb, var(--theme-accent, #FBBF24) 75%, #FFFFFF);
+  filter: blur(1px);
+  animation: moteFloat 14s ease-in-out infinite;
+}
+
+.celestial-mote--1 { width: 4px; height: 4px; top: 22vh; left: 18vw; animation-duration: 11s; animation-delay: 0s; }
+.celestial-mote--2 { width: 5px; height: 5px; top: 38vh; left: 62vw; animation-duration: 16s; animation-delay: 3s; }
+.celestial-mote--3 { width: 3px; height: 3px; top: 15vh; left: 42vw; animation-duration: 13s; animation-delay: 1.5s; }
+.celestial-mote--4 { width: 6px; height: 6px; top: 52vh; left: 28vw; animation-duration: 19s; animation-delay: 4s; }
+.celestial-mote--5 { width: 3.5px; height: 3.5px; top: 28vh; left: 78vw; animation-duration: 14s; animation-delay: 2.2s; }
+.celestial-mote--6 { width: 5px; height: 5px; top: 65vh; left: 48vw; animation-duration: 17s; animation-delay: 6s; }
+.celestial-mote--7 { width: 4px; height: 4px; top: 18vh; left: 85vw; animation-duration: 12s; animation-delay: 5s; }
+.celestial-mote--8 { width: 3px; height: 3px; top: 44vh; left: 12vw; animation-duration: 15s; animation-delay: 7s; }
+
+@keyframes moteFloat {
+  0% { transform: translate3d(0, 0, 0) scale(0.8); opacity: 0.15; }
+  50% { transform: translate3d(24px, -28px, 0) scale(1.3); opacity: 0.75; }
+  100% { transform: translate3d(-18px, -55px, 0) scale(0.6); opacity: 0.1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .celestial-cloud-wrap,
+  .celestial-birds-flight,
+  .celestial-bird,
+  .bird-wing-near,
+  .bird-wing-far,
+  .sun-volumetric-rays {
+    animation: none !important;
+  }
+  .celestial-cloud-wrap--1 { transform: translate3d(8vw, 0, 0); }
+  .celestial-cloud-wrap--2 { transform: translate3d(55vw, 0, 0); }
+  .celestial-cloud-wrap--3 { transform: translate3d(28vw, 0, 0); }
+  .celestial-birds-flight--1 { transform: translate3d(65vw, 0, 0); }
+  .celestial-birds-flight--2 { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .star {
+    animation: none;
+  }
+}
+
+/* Base Chapter Structure */
+.chapter {
+  position: relative;
+  width: 100%;
+  max-width: 100vw;
+  box-sizing: border-box;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: var(--section-padding-y);
+  padding-bottom: var(--section-padding-y);
+  scroll-margin-top: calc(var(--space-xl) + 16px);
+  background-color: transparent; /* Shines through to atmosphere planes */
+  color: var(--theme-text);
+  overflow: hidden;
+}
+
+@media (max-width: 767px) {
+  .chapter {
+    min-height: 100svh;
+    justify-content: flex-start;
+    padding-top: calc(52px + var(--space-md));
+    padding-bottom: calc(75px + env(safe-area-inset-bottom, 16px));
+    overflow: visible;
+    scroll-margin-top: 56px;
+  }
+
+  .chapter--morning {
+    min-height: 100svh;
+    justify-content: center;
+    padding-top: calc(52px + var(--space-sm));
+    padding-bottom: calc(75px + env(safe-area-inset-bottom, 16px));
+  }
+
+  .chapter--afternoon {
+    min-height: 100svh;
+    justify-content: flex-start;
+    padding-top: calc(48px + var(--space-xs));
+    padding-bottom: calc(75px + env(safe-area-inset-bottom, 16px));
+    overflow: visible;
+  }
+}
+
+/* Atmospheric Code-Based Background Glow */
+.chapter::before {
+  display: none; /* Replaced by unified fullscreen atmosphere planes */
+}
+
+.chapter > .container {
+  position: relative;
+  z-index: var(--z-content);
+}
+
+/* -------------------------------------------------------------------------
+   Chapter 01: Morning (Dawn / Intro)
+   ------------------------------------------------------------------------- */
+.chapter--morning {
+  min-height: 100vh;
+  justify-content: center;
+}
+
+.chapter--morning .intro-wrapper {
+  max-width: min(1080px, 100%);
+}
+
+.chapter--morning .intro-role {
+  font-size: var(--text-body-lg);
+  line-height: var(--lh-normal);
+  color: var(--theme-muted);
+  margin-top: var(--space-sm);
+  margin-bottom: var(--space-xl);
+}
+
+.chapter--morning .scroll-prompt {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  margin-top: var(--space-lg);
+}
+
+/* -------------------------------------------------------------------------
+   Chapter 02: Afternoon (Selected Works)
+   ------------------------------------------------------------------------- */
+.chapter--afternoon {
+  min-height: 100vh;
+  overflow: visible;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.chapter--afternoon .chapter-intro {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  margin-bottom: var(--space-xl);
+}
+
+@media (min-width: 768px) {
+  .chapter--afternoon .chapter-intro {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+}
+
+/* -------------------------------------------------------------------------
+   Chapter 03: Evening (Dusk / About)
+   ------------------------------------------------------------------------- */
+.chapter--evening {
+  min-height: 100vh;
+  justify-content: center;
+  padding-top: calc(var(--section-padding-y) + 32px);
+  padding-bottom: calc(var(--section-padding-y) + 32px);
+  border-bottom: 1px solid color-mix(in srgb, var(--theme-border) 40%, transparent);
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-xl);
+  margin-top: var(--space-lg);
+}
+
+@media (min-width: 860px) {
+  .about-grid {
+    grid-template-columns: 1.2fr 1fr;
+    gap: var(--space-2xl);
+  }
+}
+
+.about-statement {
+  font-size: var(--text-h2);
+  font-family: var(--font-display);
+  font-weight: var(--fw-medium);
+  line-height: var(--lh-snug);
+  letter-spacing: var(--ls-tight);
+  color: var(--theme-text);
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+/* ==========================================================================
+   Chapter 03: Evening (Dusk / Craft & Principles)
+   Leo Parpeix-inspired Marked Words Typography (Memorable, Non-Textly)
+   ========================================================================== */
+.principles-statement-wrap {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(1.5rem, 3vh, 2.75rem);
+  margin-top: clamp(1.2rem, 2.5vh, 2.2rem);
+}
+
+@media (min-width: 900px) {
+  .principles-statement-wrap {
+    grid-template-columns: 0.85fr 1.35fr;
+    gap: clamp(2rem, 4vw, 3.5rem);
+    align-items: start;
+  }
+}
+
+.principles-lead-col {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  background: color-mix(in srgb, var(--theme-surface) 92%, transparent);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid color-mix(in srgb, var(--theme-border) 80%, rgba(255, 255, 255, 0.25));
+  border-top: 1px solid color-mix(in srgb, var(--theme-text) 18%, rgba(255, 255, 255, 0.45));
+  border-radius: clamp(18px, 2.4vw, 26px);
+  padding: clamp(1.25rem, 2.2vw, 1.85rem);
+  box-shadow: 0 16px 40px -12px color-mix(in srgb, var(--theme-text) 10%, transparent);
+}
+
+.principles-lead-text {
+  font-size: clamp(0.95rem, 1.15vw, 1.15rem);
+  line-height: 1.5;
+  color: var(--theme-text);
+  margin: 0;
+  font-weight: var(--fw-medium);
+}
+
+.principles-academic-card {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding-top: var(--space-xs);
+  border-top: 1px dashed var(--theme-border);
+}
+
+.principles-academic-title {
+  font-family: var(--font-display);
+  font-size: var(--text-body-sm);
+  font-weight: var(--fw-semibold);
+  color: var(--theme-text);
+}
+
+.principles-academic-sub {
+  font-size: var(--text-body-xs);
+  color: var(--theme-muted);
+  line-height: 1.4;
+}
+
+/* Memorable Marked Words Display Typography */
+.principles-display-block {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(4px, 0.8vh, 10px);
+  justify-content: center;
+}
+
+.principles-display-line {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: clamp(6px, 1vw, 14px);
+  font-family: var(--font-display);
+  font-size: clamp(1.85rem, 4.4vw, 3.5rem);
+  font-weight: var(--fw-extrabold);
+  line-height: 1.05;
+  letter-spacing: var(--ls-tight);
+  text-transform: uppercase;
+  color: var(--theme-text);
+}
+
+.principles-keyword {
+  display: inline-block;
+  transition: color 0.4s var(--ease-calm);
+}
+
+.principles-keyword--accent {
+  color: var(--theme-accent);
+}
+
+.principles-mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: clamp(24px, 3.2vw, 38px);
+  height: clamp(24px, 3.2vw, 38px);
+  color: var(--theme-accent);
+  flex-shrink: 0;
+  filter: drop-shadow(0 0 10px color-mix(in srgb, var(--theme-accent) 45%, transparent));
+}
+
+.principles-mark__svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* 3 Core Pillars Minimalist Pill Bar */
+.principles-pillars-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-xs);
+  margin-top: var(--space-md);
+  padding-top: var(--space-sm);
+  border-top: 1px dashed var(--theme-border);
+}
+
+.principles-pillar-chip {
+  font-family: var(--font-mono);
+  font-size: clamp(0.68rem, 0.78vw, 0.78rem);
+  letter-spacing: var(--ls-mono);
+  padding: 6px 14px;
+  border-radius: 9999px;
+  background: color-mix(in srgb, var(--theme-surface) 92%, transparent);
+  border: 1px solid var(--theme-border);
+  color: var(--theme-text);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+}
+
+.principles-pillar-chip strong {
+  color: var(--theme-accent);
+  font-weight: var(--fw-semibold);
+}
+
+@media (max-width: 767px) {
+  .chapter--evening {
+    min-height: auto;
+    padding-top: calc(52px + var(--space-sm));
+    padding-bottom: calc(85px + env(safe-area-inset-bottom, 16px));
+  }
+
+  .principles-statement-wrap {
+    gap: var(--space-md);
+    margin-top: var(--space-sm);
+  }
+
+  .principles-display-line {
+    font-size: clamp(1.4rem, 6.2vw, 2.1rem);
+    gap: 6px;
+  }
+
+  .principles-mark {
+    width: 22px;
+    height: 22px;
+  }
+
+  .principles-pillars-row {
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .principles-pillar-chip {
+    width: 100%;
+    box-sizing: border-box;
+    white-space: normal;
+    font-size: 0.68rem;
+    padding: 6px 12px;
+  }
+}
+
+/* -------------------------------------------------------------------------
+   Chapter 04: Night (Midnight / Contact)
+   Picture-Wide Cinematic Landscape Canvas & Parallax Letter Depth
+   ------------------------------------------------------------------------- */
+.chapter--night {
+  min-height: 100vh;
+  padding: 0 !important;
+  margin: 0 !important;
+  width: 100%;
+  max-width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+  background-color: var(--theme-bg, #040811);
+}
+
+/* ==========================================================================
+   PICTURE-WIDE CINEMATIC LANDSCAPE PROFILE CANVAS (Leo Parpeix Style)
+   Edge-to-edge landscape photography + Parallax scrub camera & floating words
+   ========================================================================== */
+.landscape-profile-canvas {
+  position: relative;
+  width: 100vw;
+  max-width: 100vw;
+  margin: 0;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  min-height: clamp(680px, 92vh, 980px);
+  border-radius: 0 !important;
+  border: none;
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow: 0 30px 80px -20px rgba(0, 0, 0, 0.85);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-sizing: border-box;
+  overflow: hidden;
+  scroll-margin-top: 0;
+}
+
+/* Landscape Photography Background Layer with Oversized Parallax Height */
+.landscape-canvas__bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.landscape-canvas__img {
+  position: absolute;
+  left: 0;
+  top: -20%;
+  width: 100%;
+  height: 140%;
+  object-fit: cover;
+  object-position: center 28%;
+  filter: saturate(1.08) brightness(0.86);
+  will-change: transform;
+  pointer-events: none;
+}
+
+.landscape-canvas__scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+      180deg,
+      rgba(4, 8, 17, 0.65) 0%,
+      rgba(4, 8, 17, 0.22) 36%,
+      rgba(4, 8, 17, 0.78) 75%,
+      rgba(4, 8, 17, 0.97) 100%
+    ),
+    radial-gradient(
+      circle at 75% 35%,
+      transparent 20%,
+      rgba(4, 8, 17, 0.65) 100%
+    );
+}
+
+/* Immersive Overlay Content: Minimalist Poster Architecture */
+.landscape-canvas__content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  min-height: inherit;
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: clamp(3rem, 7vw, 6rem) clamp(1.5rem, 5.5vw, 5rem);
+  box-sizing: border-box;
+  gap: clamp(2rem, 5vh, 4rem);
+}
+
+/* Monumental Display Headline with Leo Parpeix Ghost Letter Effect */
+.landscape-hero-headline {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin-top: auto;
+  margin-bottom: clamp(1rem, 3.5vh, 2.5rem);
+  perspective: 1000px;
+}
+
+.landscape-headline-line {
+  font-family: var(--font-display);
+  font-size: clamp(3.2rem, 9.2vw, 8rem);
+  font-weight: var(--fw-extrabold);
+  line-height: 0.90;
+  letter-spacing: -0.035em;
+  text-transform: uppercase;
+  color: #FFFFFF;
+  text-shadow: 0 4px 32px rgba(0, 0, 0, 0.75);
+  will-change: transform;
+  display: block;
+  transform-origin: left center;
+  user-select: none;
+}
+
+/* Leo Parpeix Signature Ghost Word Effect */
+.landscape-headline-line--ghost {
+  color: transparent;
+  -webkit-text-stroke: clamp(1.5px, 0.18vw, 2.8px) rgba(255, 255, 255, 0.88);
+  text-shadow: 0 0 35px rgba(251, 191, 36, 0.25);
+  transition: -webkit-text-stroke 0.3s var(--ease-calm);
+}
+
+.landscape-headline-line--ghost:hover {
+  -webkit-text-stroke: clamp(1.5px, 0.18vw, 2.8px) var(--theme-accent);
+}
+
+.headline-accent-star {
+  color: var(--theme-accent);
+  -webkit-text-stroke: 0;
+  text-shadow: 0 0 24px var(--theme-accent);
+  display: inline-block;
+  transform-origin: center;
+  transition: transform 0.4s var(--ease-calm);
+}
+
+.headline-accent-star:hover {
+  transform: scale(1.18) rotate(15deg);
+}
+
+/* Bottom Block: Name & Pure Typographic Hyperlinks (Letters Only) */
+.landscape-canvas__bottom-block {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(0.75rem, 2vh, 1.25rem);
+  width: 100%;
+}
+
+.landscape-name-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.landscape-name {
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 2.6vw, 2.2rem);
+  font-weight: var(--fw-bold);
+  color: #FFFFFF;
+  letter-spacing: var(--ls-tight);
+  margin: 0;
+  line-height: 1.15;
+  text-shadow: 0 2px 16px rgba(0, 0, 0, 0.6);
+}
+
+/* ==========================================================================
+   PURE TYPOGRAPHIC HYPERLINKS (No Heavy Buttons)
+   Crystalline typography with smooth underline expansion & arrow glide
+   ========================================================================== */
+.landscape-connect-links {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: clamp(10px, 2.2vw, 24px);
+  padding-top: clamp(0.75rem, 1.8vh, 1.25rem);
+  border-top: 1px solid rgba(255, 255, 255, 0.18);
+  width: 100%;
+}
+
+.editorial-link {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: clamp(0.88rem, 1.15vw, 1.1rem);
+  letter-spacing: var(--ls-mono);
+  font-weight: var(--fw-semibold);
+  color: #FFFFFF;
+  text-decoration: none;
+  position: relative;
+  padding: 4px 0;
+  transition: color 0.25s var(--ease-calm);
+  cursor: pointer;
+}
+
+.editorial-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.25s var(--ease-calm);
+}
+
+.editorial-link:hover {
+  color: var(--theme-accent);
+}
+
+.editorial-link:hover::after {
+  transform: scaleX(1);
+}
+
+.editorial-link__arrow {
+  font-size: 0.9em;
+  opacity: 0.75;
+  transition: transform 0.25s var(--ease-calm), opacity 0.25s var(--ease-calm);
+}
+
+.editorial-link:hover .editorial-link__arrow {
+  transform: translate(3px, -3px);
+  opacity: 1;
+}
+
+.editorial-link--accent {
+  color: var(--theme-accent);
+}
+
+.editorial-link__sep {
+  color: rgba(255, 255, 255, 0.28);
+  font-size: 0.85rem;
+  user-select: none;
+}
+
+/* Site Footer */
+.site-footer {
+  width: 100%;
+  border-top: 1px solid var(--theme-border);
+  padding-top: var(--space-md);
+  padding-bottom: var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  font-family: var(--font-mono);
+  font-size: var(--text-label);
+  color: var(--theme-muted);
+  letter-spacing: var(--ls-mono);
+}
+
+@media (min-width: 768px) {
+  .site-footer {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+@media (max-width: 767px) {
+  .chapter--night {
+    min-height: auto;
+    padding: 0 !important;
+  }
+
+  .closing-wrapper {
+    margin-top: 0;
+    margin-bottom: var(--space-sm);
+    padding-top: 0;
+    padding-bottom: var(--space-sm);
+  }
+
+  .closing-title {
+    font-size: clamp(1.5rem, 6.5vw, 2.15rem);
+    line-height: 1.15;
+    margin-bottom: var(--space-xs);
+  }
+
+  .closing-wrapper .lead-text {
+    font-size: 0.85rem;
+    line-height: 1.35;
+    margin-bottom: var(--space-sm);
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+
+  .landscape-profile-canvas {
+    padding: 0;
+    min-height: clamp(560px, 86vh, 740px);
+    border-radius: 0 !important;
+    width: 100vw;
+    max-width: 100vw;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    left: 50%;
+    right: 50%;
+  }
+
+  .landscape-canvas__content {
+    padding: clamp(2rem, 6vw, 3rem) clamp(1.25rem, 5vw, 2rem);
+  }
+
+  .landscape-hero-headline {
+    margin-bottom: clamp(1.25rem, 3.5vh, 2rem);
+  }
+
+  .landscape-headline-line {
+    font-size: clamp(2.2rem, 10.5vw, 3.6rem);
+    line-height: 0.94;
+  }
+
+  .landscape-name {
+    font-size: clamp(1.15rem, 5vw, 1.45rem);
+    margin-bottom: 2px;
+  }
+
+  .landscape-connect-links {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+    padding-top: 10px;
+  }
+
+  .editorial-link {
+    font-size: 0.92rem;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .editorial-link__sep {
+    display: none;
+  }
+
+  .site-footer {
+    padding-top: var(--space-sm);
+    padding-bottom: calc(80px + env(safe-area-inset-bottom, 16px));
+    font-size: 0.68rem;
+    gap: 4px;
+  }
+}

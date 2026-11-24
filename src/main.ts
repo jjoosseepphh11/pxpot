@@ -19,6 +19,8 @@ import { initLoaderSequence } from './motion/loaderSequence';
 import { initTunnelTransition } from './motion/tunnelTransition';
 import { initProjectsHorizontal } from './motion/projectsHorizontal';
 import { initProceduralAudio } from './audio/proceduralAudio';
+import { initShareCardModal } from './motion/shareCardModal';
+import { initHeroNameRotor } from './motion/heroNameRotor';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 /**
@@ -38,7 +40,7 @@ function verifyThemeTokens(): void {
 (window as unknown as { ScrollTrigger: typeof ScrollTrigger }).ScrollTrigger = ScrollTrigger;
 
 // Lifecycle boot
-document.addEventListener('DOMContentLoaded', () => {
+function boot(): void {
   if ('scrollRestoration' in history) {
     history.scrollRestoration = 'manual';
   }
@@ -68,6 +70,8 @@ document.addEventListener('DOMContentLoaded', () => {
   initCustomCursor();
   initMascotMotion();
   initProceduralAudio();
+  initShareCardModal();
+  initHeroNameRotor();
 
   // Baseline calibration before opening sequence
   ScrollTrigger.refresh();
@@ -78,4 +82,10 @@ document.addEventListener('DOMContentLoaded', () => {
       revealMorningHero();
     },
   });
-});
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', boot);
+} else {
+  boot();
+}

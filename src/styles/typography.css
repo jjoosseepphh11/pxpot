@@ -16,6 +16,250 @@
   word-break: normal;
 }
 
+/* ==========================================================================
+   Hero Title Modes (Full Name Desktop, Rotor Tablet, Compact Pat Mobile)
+   ========================================================================== */
+
+/* 1. Desktop & Laptop Full Name Mode with Playful Companion Mascot (min-width: 860px) */
+.hero-title__full-mode {
+  display: inline-flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  position: relative;
+  vertical-align: baseline;
+}
+
+.hero-full-name-group {
+  position: relative;
+  display: inline-flex;
+  align-items: baseline;
+}
+
+.hero-full-name-words {
+  display: inline-flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  column-gap: 0.28em;
+  row-gap: 0.1em;
+}
+
+.hero-name-word {
+  display: inline-block;
+  white-space: nowrap;
+  vertical-align: baseline;
+  color: var(--theme-accent, #F59E0B);
+  transition: color 0.2s ease;
+}
+
+.hero-name-word--surname {
+  color: var(--theme-text);
+}
+
+.hero-name-char {
+  display: inline-block;
+  cursor: pointer;
+  transform-origin: bottom center;
+  transition: color 0.15s ease;
+  user-select: none;
+  touch-action: manipulation;
+}
+
+.hero-name-char:hover {
+  color: #FBBF24;
+}
+
+/* Playful Desktop Companion Mascot */
+.hero-full-mascot {
+  position: absolute;
+  bottom: calc(100% - 4px);
+  left: 20px;
+  width: 44px;
+  height: 35px;
+  cursor: pointer;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  touch-action: manipulation;
+  user-select: none;
+  filter: drop-shadow(0 3px 10px rgba(245, 158, 11, 0.35));
+  will-change: transform;
+}
+
+.hero-full-mascot__svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.hero-full-mascot__speech {
+  position: absolute;
+  top: -32px;
+  left: 50%;
+  transform: translateX(-50%) translateY(4px) scale(0.92);
+  background: rgba(7, 17, 30, 0.96);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: #FDE68A;
+  border: 1px solid rgba(245, 158, 11, 0.55);
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  line-height: 1.35;
+  padding: 5px 14px;
+  border-radius: 9999px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.22s ease, transform 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.45), 0 0 10px rgba(245, 158, 11, 0.2);
+  z-index: 20;
+}
+
+.hero-full-mascot__speech.is-active,
+.hero-full-mascot:hover .hero-full-mascot__speech {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0) scale(1);
+}
+
+/* 2. Hero Downward Typographic Rotor (Medium & Tablet Screens) */
+.hero-title__rotor-mode {
+  display: none;
+  align-items: baseline;
+  gap: 0.24em;
+  flex-wrap: nowrap;
+  position: relative;
+  vertical-align: baseline;
+  line-height: inherit;
+}
+
+.hero-rotor-stage {
+  position: relative;
+  display: inline-grid;
+  grid-template-areas: "rotor";
+  align-items: baseline;
+  justify-items: start;
+  vertical-align: baseline;
+  line-height: inherit;
+  clip-path: inset(-15% 0 -15% 0);
+  perspective: 600px;
+  transform-style: preserve-3d;
+  transition: width 0.32s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: width;
+}
+
+.hero-rotor-word {
+  grid-area: rotor;
+  white-space: nowrap;
+  color: var(--theme-accent, #F59E0B);
+  transform-origin: center bottom;
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+  line-height: inherit;
+  vertical-align: baseline;
+}
+
+.hero-rotor-fixed {
+  display: inline-block;
+  color: var(--theme-text);
+  line-height: inherit;
+  vertical-align: baseline;
+}
+
+/* 3. Small-Screen Compact "Pat" with Animated Letters & Playful Companion Mascot */
+.hero-title__compact-mode {
+  display: none;
+  align-items: baseline;
+  gap: 0.26em;
+  flex-wrap: wrap;
+  position: relative;
+}
+
+.hero-compact-pat-group {
+  position: relative;
+  display: inline-flex;
+  align-items: baseline;
+}
+
+.hero-compact-letters {
+  display: inline-flex;
+  color: var(--theme-accent, #F59E0B);
+  letter-spacing: -0.02em;
+}
+
+.hero-pat-char {
+  display: inline-block;
+  cursor: pointer;
+  transform-origin: bottom center;
+  transition: color 0.15s ease;
+  user-select: none;
+  touch-action: manipulation;
+}
+
+.hero-pat-char:hover {
+  color: #FBBF24;
+}
+
+.hero-pat-mascot {
+  position: absolute;
+  bottom: calc(100% - 4px);
+  left: 50%;
+  transform: translateX(-50%);
+  width: 38px;
+  height: 30px;
+  cursor: pointer;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  touch-action: manipulation;
+  user-select: none;
+  filter: drop-shadow(0 2px 8px rgba(245, 158, 11, 0.35));
+}
+
+.hero-pat-mascot__svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.hero-pat-mascot__speech {
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  transform: translateX(-50%) translateY(4px) scale(0.92);
+  background: rgba(7, 17, 30, 0.96);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: #FDE68A;
+  border: 1px solid rgba(245, 158, 11, 0.55);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  line-height: 1.35;
+  padding: 5px 12px;
+  border-radius: 9999px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.22s ease, transform 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.45);
+  z-index: 20;
+}
+
+.hero-pat-mascot__speech.is-active,
+.hero-pat-mascot:hover .hero-pat-mascot__speech {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0) scale(1);
+}
+
+.hero-compact-surname {
+  display: inline-block;
+  color: var(--theme-text);
+}
+
 @media (max-width: 600px) {
   .hero-title {
     margin-bottom: var(--space-sm);
@@ -23,6 +267,58 @@
     letter-spacing: -0.025em;
     overflow-wrap: anywhere;
     word-break: break-word;
+  }
+}
+
+/* Responsive Viewport Mode Switching */
+@media (min-width: 860px) {
+  .hero-title__full-mode {
+    display: inline-flex !important;
+    margin-top: 24px;
+  }
+  .hero-title__rotor-mode {
+    display: none !important;
+  }
+  .hero-title__compact-mode {
+    display: none !important;
+  }
+}
+
+@media (max-width: 859px) and (min-width: 541px) {
+  .hero-title__full-mode {
+    display: none !important;
+  }
+  .hero-title__rotor-mode {
+    display: inline-flex !important;
+    margin-top: 14px;
+  }
+  .hero-title__compact-mode {
+    display: none !important;
+  }
+}
+
+@media (max-width: 540px) {
+  .hero-title__full-mode {
+    display: none !important;
+  }
+  .hero-title__rotor-mode {
+    display: none !important;
+  }
+  .hero-title__compact-mode {
+    display: inline-flex !important;
+    margin-top: 26px; /* space for hopping mascot */
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-rotor-word {
+    transition: opacity 0.35s ease !important;
+    transform: none !important;
+  }
+  .hero-full-mascot,
+  .hero-pat-mascot {
+    animation: none !important;
+    transition: none !important;
   }
 }
 

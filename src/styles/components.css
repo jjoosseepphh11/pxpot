@@ -100,8 +100,8 @@ body[data-active-chapter="night"] .atmosphere-backdrop {
   box-sizing: border-box;
   z-index: var(--z-header);
   padding: var(--space-md) var(--gutter);
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
   align-items: center;
   pointer-events: none;
 }
@@ -125,14 +125,17 @@ body[data-active-chapter="night"] .atmosphere-backdrop {
 }
 
 .site-header__brand {
+  justify-self: start;
   pointer-events: auto;
 }
 
 .site-header__nav {
+  justify-self: center;
   pointer-events: auto;
 }
 
 .site-header__meta {
+  justify-self: end;
   pointer-events: auto;
 }
 
@@ -252,6 +255,8 @@ body[data-active-chapter="night"] .atmosphere-backdrop {
    ------------------------------------------------------------------------- */
 @media (max-width: 767px) {
   .site-header {
+    display: flex;
+    justify-content: space-between;
     padding: var(--space-2xs) var(--gutter);
     height: 44px;
     align-items: center;
@@ -1207,25 +1212,25 @@ body[data-active-chapter="night"] .atmosphere-backdrop {
 
 .loader-weather__bubble {
   position: absolute;
-  top: -10px;
+  top: -12px;
   right: -8px;
-  background: rgba(7, 17, 30, 0.9);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  border: 1px solid #FBBF24;
+  background: rgba(7, 17, 30, 0.96);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(245, 158, 11, 0.6);
   border-radius: 9999px;
-  padding: 2px 10px;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+  padding: 5px 14px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
   white-space: nowrap;
   pointer-events: none;
 }
 
 .loader-weather__speech {
   font-family: var(--font-mono);
-  font-size: 0.65rem;
-  font-weight: var(--fw-semibold);
-  color: #FBBF24;
-  letter-spacing: var(--ls-mono);
+  font-size: 0.74rem;
+  font-weight: 700;
+  color: #FDE68A;
+  letter-spacing: 0.02em;
 }
 
 .loader-tag {
@@ -1825,12 +1830,12 @@ body[data-active-chapter="night"] .atmosphere-backdrop {
   background: color-mix(in srgb, var(--theme-surface, #0A1424) 94%, transparent);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
-  border: 1px solid var(--theme-accent, #F59E0B);
+  border: 1px solid rgba(245, 158, 11, 0.55);
   border-radius: 9999px;
-  padding: 4px 12px;
-  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.28);
+  padding: 5px 14px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.35);
   pointer-events: none;
-  max-width: min(230px, 75vw);
+  max-width: min(260px, 80vw);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -1839,10 +1844,10 @@ body[data-active-chapter="night"] .atmosphere-backdrop {
 
 .bash-mascot__speech {
   font-family: var(--font-mono);
-  font-size: 0.65rem;
-  font-weight: var(--fw-semibold);
-  color: var(--theme-accent);
-  letter-spacing: var(--ls-mono);
+  font-size: 0.74rem;
+  font-weight: 700;
+  color: #FDE68A;
+  letter-spacing: 0.02em;
   white-space: nowrap;
 }
 
@@ -1858,13 +1863,13 @@ body[data-active-chapter="night"] .atmosphere-backdrop {
     bottom: calc(100% + 8px);
     top: auto;
     right: 0;
-    max-width: min(240px, calc(100vw - 32px));
-    padding: 3px 10px;
-    background: rgba(10, 20, 36, 0.94);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
+    max-width: min(260px, calc(100vw - 32px));
+    padding: 5px 12px;
+    background: rgba(10, 20, 36, 0.96);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
   }
   .bash-mascot__speech {
-    font-size: 0.65rem;
+    font-size: 0.72rem;
   }
 }
 
@@ -1883,5 +1888,893 @@ body[data-active-chapter="night"] .atmosphere-backdrop {
 @media (prefers-reduced-motion: reduce) {
   .bash-mascot {
     display: none;
+  }
+}
+
+/* ==========================================================================
+   INTERACTIVE 3D FLIPPABLE SHARE & PROFILE CONNECT CARD MODAL
+   Conforms to Alto's Adventure UI, zero reflow, procedural SVG QR codes.
+   ========================================================================== */
+
+/* Trigger Button (Header & Contact Chapter) */
+.btn-share-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: 9999px;
+  background: color-mix(in srgb, var(--theme-surface, #0A1424) 80%, rgba(255, 255, 255, 0.08));
+  border: 1px solid color-mix(in srgb, var(--theme-border, rgba(255, 255, 255, 0.16)) 85%, var(--theme-accent, #F59E0B));
+  color: var(--theme-text, #F8FAFC);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: var(--fw-semibold);
+  letter-spacing: var(--ls-mono);
+  cursor: pointer;
+  user-select: none;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+              background 0.2s ease,
+              border-color 0.2s ease,
+              box-shadow 0.2s ease;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.btn-share-trigger:hover {
+  background: color-mix(in srgb, var(--theme-accent, #F59E0B) 16%, var(--theme-surface, #0A1424));
+  border-color: var(--theme-accent, #F59E0B);
+  color: #FFFFFF;
+  transform: translateY(-1.5px);
+  box-shadow: 0 4px 16px color-mix(in srgb, var(--theme-accent, #F59E0B) 25%, transparent);
+}
+
+.btn-share-trigger:active {
+  transform: scale(0.96);
+}
+
+.btn-share-trigger__spark {
+  color: var(--theme-accent, #F59E0B);
+  font-size: 0.8rem;
+  line-height: 1;
+}
+
+.btn-share-trigger--contact {
+  padding: 8px 18px;
+  font-size: 0.78rem;
+  background: rgba(245, 158, 11, 0.12);
+  border-color: rgba(245, 158, 11, 0.4);
+}
+
+.btn-share-trigger--contact:hover {
+  background: rgba(245, 158, 11, 0.24);
+  border-color: #F59E0B;
+}
+
+/* Icon-only Share Trigger Button (Header) */
+.btn-share-trigger--icon-only {
+  width: 34px;
+  height: 34px;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.btn-share-trigger__icon {
+  width: 15px;
+  height: 15px;
+  display: block;
+}
+
+/* Lock background scrolling when modal is open */
+body.modal-open {
+  overflow: hidden !important;
+  touch-action: none;
+}
+
+/* Modal Shell & Backdrop */
+.share-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(12px, 3.5vw, 24px);
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              visibility 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity;
+}
+
+.share-modal.is-open {
+  pointer-events: auto;
+  opacity: 1;
+  visibility: visible;
+}
+
+.share-modal__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(4, 9, 18, 0.76);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  cursor: pointer;
+  will-change: opacity;
+}
+
+/* Modal Dialog */
+.share-modal__dialog {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 430px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-height: calc(100vh - 24px);
+  padding: 12px 0;
+  overflow-y: visible;
+  overflow-x: hidden;
+  scrollbar-width: none;
+  will-change: transform, opacity;
+}
+
+.share-modal__dialog::-webkit-scrollbar {
+  display: none;
+}
+
+/* Close Pill Button */
+.share-modal__close-btn {
+  align-self: flex-end;
+  margin-bottom: 8px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 12px;
+  border-radius: 9999px;
+  background: rgba(15, 23, 42, 0.9);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  color: #F8FAFC;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: var(--fw-semibold);
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+}
+
+.share-modal__close-btn:hover {
+  background: rgba(239, 68, 68, 0.2);
+  border-color: rgba(239, 68, 68, 0.6);
+  color: #FCA5A5;
+  transform: translateY(-1px);
+}
+
+.share-modal__close-cue {
+  font-size: 0.6rem;
+  opacity: 0.65;
+  letter-spacing: 0.05em;
+}
+
+/* 3D Card Scene & Flipper */
+.share-card-scene {
+  width: 100%;
+  perspective: 1200px;
+  display: flex;
+  justify-content: center;
+}
+
+.share-card-flipper {
+  position: relative;
+  width: 100%;
+  min-height: 590px;
+  transform-style: preserve-3d;
+  transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+  border-radius: 28px;
+  outline: none;
+}
+
+.share-card-flipper.is-flipped {
+  transform: rotateY(180deg);
+}
+
+.share-card-flipper:focus-visible {
+  box-shadow: 0 0 0 2px var(--theme-accent, #F59E0B);
+}
+
+/* Front & Back Faces */
+.share-card-face {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  border-radius: 28px;
+  background: #0B1424;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 24px 64px -8px rgba(0, 0, 0, 0.65),
+              0 0 0 1px rgba(255, 255, 255, 0.08) inset;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.share-card-face--front {
+  z-index: 2;
+  transform: rotateY(0deg);
+}
+
+.share-card-face--back {
+  z-index: 1;
+  transform: rotateY(180deg);
+  background: #08101E;
+  padding: 20px 22px 22px;
+  justify-content: space-between;
+}
+
+/* Front Banner with Patrick Photo & Ambient Visibility */
+.share-card__banner {
+  position: relative;
+  height: 215px;
+  width: 100%;
+  overflow: hidden;
+  background: #0F1D30;
+}
+
+.share-card__photo-wrap {
+  width: 100%;
+  height: 100%;
+}
+
+.share-card__photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 46%;
+  display: block;
+  filter: contrast(1.03) brightness(1.02);
+  transition: transform 0.4s ease;
+}
+
+.share-card__banner::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(11, 20, 36, 0.96) 0%, rgba(11, 20, 36, 0.32) 18%, transparent 48%);
+  pointer-events: none;
+}
+
+.share-card__header-tag {
+  position: absolute;
+  top: 14px;
+  left: 16px;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: 9999px;
+  background: rgba(11, 20, 36, 0.88);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  color: #BAE6FD;
+  letter-spacing: var(--ls-mono);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Front Body */
+.share-card__body {
+  padding: 14px 20px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+  flex: 1;
+  justify-content: space-between;
+}
+
+.share-card__label-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2px;
+}
+
+.share-card__mono-tag {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  color: #38BDF8;
+  letter-spacing: 0.08em;
+  font-weight: var(--fw-semibold);
+}
+
+.share-card__alias {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  color: #F59E0B;
+  background: rgba(245, 158, 11, 0.14);
+  padding: 2px 8px;
+  border-radius: 9999px;
+  border: 1px solid rgba(245, 158, 11, 0.25);
+}
+
+/* Name Stage & Playful Mascot */
+.share-card__name-stage {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 10px;
+  margin: 3px 0 1px;
+}
+
+.share-card__name {
+  font-family: var(--font-display);
+  color: #FFFFFF;
+  line-height: 1.2;
+  margin: 0;
+  letter-spacing: -0.015em;
+  flex: 1;
+}
+
+.name-display--full {
+  display: block;
+  font-size: clamp(0.98rem, 3.2vw, 1.22rem);
+  font-weight: 800;
+  line-height: 1.22;
+}
+
+.name-word {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.name-char {
+  display: inline-block;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+              color 0.2s ease;
+  cursor: pointer;
+  user-select: none;
+}
+
+.name-char:hover {
+  transform: translateY(-2px) scale(1.12);
+  color: #F59E0B;
+}
+
+/* Playful Floating Mascot Companion */
+.card-playful-mascot {
+  position: relative;
+  width: 52px;
+  height: 42px;
+  flex-shrink: 0;
+  cursor: pointer;
+  user-select: none;
+  touch-action: manipulation;
+  filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.4));
+  will-change: transform;
+  outline: none;
+}
+
+.card-playful-mascot:active {
+  transform: scale(0.92);
+}
+
+.card-playful-mascot__body {
+  width: 100%;
+  height: 100%;
+  will-change: transform;
+}
+
+.card-playful-mascot__svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.card-playful-mascot__speech {
+  position: absolute;
+  bottom: calc(100% + 8px);
+  right: -8px;
+  background: rgba(11, 20, 36, 0.96);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(245, 158, 11, 0.6);
+  border-radius: 9999px;
+  padding: 5px 12px;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: #FDE68A;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(4px) scale(0.92);
+  transition: opacity 0.22s ease, transform 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 10;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+}
+
+.card-playful-mascot:hover .card-playful-mascot__speech,
+.card-playful-mascot.is-speaking .card-playful-mascot__speech {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.share-card__title {
+  font-size: 0.76rem;
+  color: #94A3B8;
+  line-height: 1.35;
+  margin: 3px 0 0;
+}
+
+.share-card__accent-role {
+  color: #FBBF24;
+  font-weight: var(--fw-semibold);
+}
+
+/* Highlights List */
+.share-card__highlights {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.share-card__highlights li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.72rem;
+  color: #CBD5E1;
+  line-height: 1.32;
+}
+
+.highlight-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.highlight-dot--amber { background: #F59E0B; box-shadow: 0 0 6px rgba(245, 158, 11, 0.6); }
+.highlight-dot--cyan { background: #38BDF8; box-shadow: 0 0 6px rgba(56, 189, 248, 0.6); }
+.highlight-dot--rose { background: #FB7185; box-shadow: 0 0 6px rgba(251, 113, 133, 0.6); }
+.highlight-dot--emerald { background: #34D399; box-shadow: 0 0 6px rgba(52, 211, 153, 0.6); }
+
+/* Portfolio QR Box on Front */
+.share-card__qr-section {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 10px 12px;
+}
+
+.share-card__qr-box {
+  width: 68px;
+  height: 68px;
+  background: #FFFFFF;
+  border-radius: 10px;
+  padding: 4px;
+  flex-shrink: 0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.share-card__qr-box svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  color: #07111E !important;
+}
+
+.share-card__qr-box svg path {
+  fill: #07111E !important;
+}
+
+.share-card__qr-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+  min-width: 0;
+}
+
+.share-card__qr-title {
+  font-size: 0.74rem;
+  font-weight: 700;
+  color: #FFFFFF;
+  line-height: 1.2;
+}
+
+.share-card__qr-url {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  color: #94A3B8;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.share-card__qr-actions {
+  display: flex;
+  gap: 6px;
+  margin-top: 4px;
+}
+
+.btn-card-action {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: var(--fw-semibold);
+  padding: 4px 10px;
+  border-radius: 9999px;
+  background: #F59E0B;
+  color: #07111E;
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  text-decoration: none;
+  transition: transform 0.15s ease, background 0.15s ease;
+}
+
+.btn-card-action:hover {
+  background: #FBBF24;
+  transform: translateY(-1px);
+}
+
+.btn-card-action--ghost {
+  background: rgba(255, 255, 255, 0.08);
+  color: #E2E8F0;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.btn-card-action--ghost:hover {
+  background: rgba(255, 255, 255, 0.16);
+  border-color: rgba(255, 255, 255, 0.25);
+  color: #FFFFFF;
+}
+
+/* Flip Bar */
+.share-card__flip-bar {
+  width: 100%;
+}
+
+.btn-card-flip {
+  width: 100%;
+  padding: 8px 14px;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #F8FAFC;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: var(--fw-semibold);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+              background 0.2s ease,
+              border-color 0.2s ease,
+              color 0.2s ease;
+}
+
+.btn-card-flip:hover {
+  background: rgba(245, 158, 11, 0.16);
+  border-color: rgba(245, 158, 11, 0.5);
+  color: #FDE68A;
+  transform: translateY(-1px);
+}
+
+.btn-card-flip__icon {
+  font-size: 0.85rem;
+  line-height: 1;
+}
+
+/* Back Face Elements */
+.share-card__back-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.share-card__back-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.share-card__mascot-mini {
+  width: 38px;
+  height: 30px;
+}
+
+.share-card__mascot-mini svg {
+  width: 100%;
+  height: 100%;
+}
+
+.share-card__back-title {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #FFFFFF;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.share-card__badge-round {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  color: #38BDF8;
+  border: 1px solid rgba(56, 189, 248, 0.3);
+  padding: 3px 8px;
+  border-radius: 9999px;
+  background: rgba(56, 189, 248, 0.08);
+}
+
+/* Dual QR Grid on Back */
+.share-card__dual-qr {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin: 12px 0;
+}
+
+.share-card__qr-tile {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 16px;
+  padding: 10px 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 6px;
+}
+
+.share-card__qr-tile-code {
+  width: 80px;
+  height: 80px;
+  background: #FFFFFF;
+  border-radius: 10px;
+  padding: 4px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.share-card__qr-tile-code svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  color: #07111E !important;
+}
+
+.share-card__qr-tile-code svg path {
+  fill: #07111E !important;
+}
+
+.share-card__qr-tile-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  width: 100%;
+}
+
+.share-card__platform-name {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: #38BDF8;
+}
+
+.share-card__platform-link {
+  font-size: 0.68rem;
+  color: #F8FAFC;
+  font-weight: var(--fw-semibold);
+  text-decoration: none;
+  max-width: 130px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.share-card__platform-link:hover {
+  color: #FBBF24;
+  text-decoration: underline;
+}
+
+.share-card__platform-desc {
+  font-size: 0.6rem;
+  color: #94A3B8;
+  line-height: 1.25;
+}
+
+/* Back Face Direct Contact */
+.share-card__direct-contact {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 14px;
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+
+.share-card__contact-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.share-card__contact-label {
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  color: #64748B;
+  letter-spacing: 0.05em;
+  font-weight: var(--fw-semibold);
+}
+
+.share-card__contact-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.share-card__contact-val {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: #E2E8F0;
+  text-decoration: none;
+}
+
+.share-card__contact-val:hover {
+  color: #FBBF24;
+  text-decoration: underline;
+}
+
+.share-card__contact-val--dim {
+  color: #94A3B8;
+  font-size: 0.62rem;
+}
+
+.btn-copy-mini {
+  padding: 2px 7px;
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  font-weight: var(--fw-semibold);
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  color: #CBD5E1;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.btn-copy-mini:hover {
+  background: #F59E0B;
+  color: #07111E;
+  border-color: #F59E0B;
+}
+
+/* Toast Feedback Notification */
+.share-modal__toast {
+  position: absolute;
+  bottom: 24px;
+  z-index: 2050;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: 9999px;
+  background: rgba(15, 23, 42, 0.95);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--theme-accent, #F59E0B);
+  color: #FFFFFF;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: var(--fw-semibold);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  will-change: transform, opacity;
+}
+
+.share-modal__toast.is-visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Responsive Breakpoints */
+@media (max-width: 480px) {
+  .share-modal__dialog {
+    max-width: 100%;
+  }
+
+  .share-card-flipper {
+    min-height: 590px;
+    border-radius: 24px;
+  }
+
+  .share-card-face {
+    border-radius: 24px;
+  }
+
+  .share-card__banner {
+    height: 195px;
+  }
+
+  .name-display--full {
+    display: block;
+    font-size: clamp(0.92rem, 4.2vw, 1.12rem);
+    line-height: 1.2;
+  }
+
+  .card-playful-mascot {
+    width: 46px;
+    height: 38px;
+  }
+
+  .share-card__qr-box {
+    width: 60px;
+    height: 60px;
+  }
+
+  .share-card__qr-tile-code {
+    width: 72px;
+    height: 72px;
+  }
+}
+
+/* Reduced Motion Fallback (WCAG 2.3.3) */
+@media (prefers-reduced-motion: reduce) {
+  .share-card-flipper {
+    transition: none !important;
+  }
+
+  .share-card-flipper.is-flipped .share-card-face--front {
+    opacity: 0;
+    pointer-events: none;
+    transform: none;
+  }
+
+  .share-card-flipper.is-flipped .share-card-face--back {
+    opacity: 1;
+    pointer-events: auto;
+    transform: none;
+  }
+
+  .share-card-face--back {
+    transform: none;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease;
   }
 }

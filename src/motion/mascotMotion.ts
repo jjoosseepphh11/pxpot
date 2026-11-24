@@ -22,7 +22,7 @@ gsap.registerPlugin(ScrollTrigger);
 const BASH_CLICK_QUOTES = [
   '>_ welcome to Patrick\'s portfolio! ✨',
   '>_ BSIT Dean\'s List Scholar 🎓',
-  '>_ AWS Learning Club – Polar Lead ☁️',
+  '>_ AWS Learning Club – Polar Founder & Former Lead ☁️',
   '>_ Santa Rosa, Laguna 🇵🇭',
   '>_ explore selected systems below ✦',
   '>_ tap to flip & spin! ↺',
@@ -53,7 +53,7 @@ const IDLE_DIALOGUES: Record<string, string[]> = {
     '>_ BSIT student at PUP Santa Rosa 🎓',
     '>_ consistent Dean\'s List standing 📚',
     '>_ morning focus & clean systems ☕',
-    '>_ AWS Learning Club – Polar Lead ☁️',
+    '>_ AWS Learning Club – Polar Founder & Former Lead ☁️',
     '>_ scroll down to explore works ↓',
   ],
   afternoon: [
@@ -66,7 +66,7 @@ const IDLE_DIALOGUES: Record<string, string[]> = {
     '>_ smooth interactive works scrub ✦',
   ],
   evening: [
-    '>_ AWS Learning Club – Polar Lead ☁️',
+    '>_ AWS Learning Club – Polar Founder & Former Lead ☁️',
     '>_ deterministic systems & craft 🏛️',
     '>_ human-centered engineering 🤝',
     '>_ zero-waste cloud efficiency ⚡',

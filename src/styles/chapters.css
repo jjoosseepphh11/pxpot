@@ -545,6 +545,10 @@ body[data-active-chapter="night"] .celestial-horizon__svg--near {
   max-width: min(1080px, 100%);
 }
 
+.chapter--morning .intro-wrapper .chapter-meta {
+  margin-bottom: clamp(2.8rem, 6vh, 4rem);
+}
+
 .chapter--morning .intro-role {
   font-size: var(--text-body-lg);
   line-height: var(--lh-normal);
